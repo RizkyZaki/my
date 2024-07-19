@@ -69,7 +69,7 @@ const Hero = () => {
           </div>
 
           <h2 className="uppercase tracking-widest max-sm:text-xs text-lg text-center text-black-100 dark:text-blue-100 max-md:mt-8">
-            Hola My name Rizky Zaki Welcome To My Portfolio.
+            Hola My name Rizky Zaki Welcome To My Personal Website.
           </h2>
 
           <Link

@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.zach.my"),
   title: "Zach | Personal Website",
   description:
-    "Welcome to Zach portfolio website. Discover my projects, skills, and professional journey. View my resume and contact me for services.",
+    "Welcome to Zach Personal website. Discover my projects, skills, and professional journey. View my resume and contact me for services.",
   openGraph: {
-    title: "Zach | Portfolio",
+    title: "Zach | Personal Website",
     description:
-      "Welcome to Zach portfolio website. Discover my projects, skills, and professional journey. View my resume and contact me for services.",
+      "Welcome to Zach Personal website. Discover my projects, skills, and professional journey. View my resume and contact me for services.",
     images: [
       {
         url: "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
