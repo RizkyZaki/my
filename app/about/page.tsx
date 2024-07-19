@@ -119,7 +119,7 @@ const Page = () => {
               About me
             </Badge>
             <div className="max-w-6xl mx-auto blogContent py-7 pl-3 pr-2">
-              <div className="paraHead">Hello there!</div>I am a Software
+              <div className="paraHead">Hello there! 👋</div>I am a Software
               Engineer, currently pursuing the degree of Bachelor of System
               Information. I am in second year of my four years course duration.{" "}
               <br />
@@ -132,7 +132,7 @@ const Page = () => {
               </span>
               , I also love{" "}
               <span className="highlight">Artificial Intelligence(AI).</span>
-              <div className="paraHead">Academic qualifications</div>
+              <div className="paraHead">Academic qualifications 🎓</div>
               My Academic qualifications are as shown below:
               <div className="paraHeadSecondary">
                 - Bachelor System Information
@@ -143,7 +143,7 @@ const Page = () => {
               Secured <strong className="highlight">percentage 89.6</strong> in
               standard XII in the year 2023 from my school{" "}
               <strong className="highlight">SMK BINA KERJA</strong>
-              <div className="paraHead">Experience</div>
+              <div className="paraHead">Experience 💻</div>
               <div className="paraHeadSecondary">
                 - Software Engineer at PT. Pratama Solusi Teknologi
               </div>
@@ -151,14 +151,14 @@ const Page = () => {
                 - Member Of Web Divison at CCI Organization
               </div>
               <div className="paraHeadSecondary">- Web Developer Freelance</div>
-              <div className="paraHead">Achievements</div>
+              <div className="paraHead">Achievements 🌟</div>
               My list of achievements:
               <div className="paraHeadSecondary">
                 - LKS Web Technology District Level 2022 Winner
               </div>{" "}
               Secured <strong className="highlight">Rank 1</strong> in Coding
-              Competition held in May <div className="paraHead">Skills</div>- My
-              technical skills include{" "}
+              Competition held in May <div className="paraHead">Skills 💪</div>-
+              My technical skills include{" "}
               <strong className="highlight">programming.</strong> <br />- I have
               proficiency in languages like{" "}
               <strong className="highlight">
@@ -185,7 +185,7 @@ const Page = () => {
               <strong className="highlight">fast learner</strong>,{" "}
               <strong className="highlight">consistent</strong> in my work and{" "}
               <strong className="highlight">punctual</strong>.
-              <div className="paraHead">Interests & Hobbies</div>
+              <div className="paraHead">Interests & Hobbies 🎾</div>
               Interested in learning new technologies and working on them, I
               also love programming and solving new problems by implementing the
               concepts of{" "}
