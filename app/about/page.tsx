@@ -133,18 +133,26 @@ const Page = () => {
               , I also love{" "}
               <span className="highlight">Artificial Intelligence(AI).</span>
               <div className="paraHead">Academic qualifications</div>
-              My Academic qualifications are as shown below:-
+              My Academic qualifications are as shown below:
               <div className="paraHeadSecondary">
                 - Bachelor System Information
               </div>
-              Secured <strong className="highlight">GPA 3.75</strong> in till
+              Secured <strong className="highlight">GPA 3.51</strong> in till
               two semester from my college Telkom University.
               <div className="paraHeadSecondary">- Class XII </div>
-              Secured <strong className="highlight">percentage 87.6</strong> in
+              Secured <strong className="highlight">percentage 89.6</strong> in
               standard XII in the year 2023 from my school{" "}
               <strong className="highlight">SMK BINA KERJA</strong>
+              <div className="paraHead">Experience</div>
+              <div className="paraHeadSecondary">
+                - Software Engineer at PT. Pratama Solusi Teknologi
+              </div>
+              <div className="paraHeadSecondary">
+                - Member Of Web Divison at CCI Organization
+              </div>
+              <div className="paraHeadSecondary">- Web Developer Freelance</div>
               <div className="paraHead">Achievements</div>
-              My list of achievements till date are as under:-
+              My list of achievements:
               <div className="paraHeadSecondary">
                 - LKS Web Technology District Level 2022 Winner
               </div>{" "}
