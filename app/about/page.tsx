@@ -55,7 +55,7 @@ const Page = () => {
 
         <p className="font-medium text-lg mt-3 flex items-center justify-start px-3 sm:px-5">
           <MapPin size={18} className="mr-2" />
-          <p className="text-[#b3b9fb] dark:text-[#b3b5ff]">
+          <p className="text-[#38394d] dark:text-[#b3b5ff]">
             Bandung, Indonesia
           </p>
         </p>

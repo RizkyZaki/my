@@ -20,7 +20,7 @@ const Footer = () => {
 
       <div className="max-w-7xl mx-auto sm:px-10 px-5  flex flex-col items-center">
         <h2 className="heading pb-5">Found my Portfolio really amazing ?</h2>
-        <p className="text-white-200 md:mt-10 my-5 text-center max-md:mx-5  lg:max-w-[45vw]">
+        <p className="text-black-200 dark:text-white-200 md:mt-10 my-5 text-center max-md:mx-5  lg:max-w-[45vw]">
           Reach out to me today and let&apos;s discuss how I can help <i>you</i>{" "}
           to build your products.
         </p>

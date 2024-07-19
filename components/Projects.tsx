@@ -73,7 +73,7 @@ const Projects = ({
           >
             <div className="xl:w-1/2 max-xl:w-[90%] flex flex-col items-start mx-5">
               <h3 className="secondaryHeading pb-8">{title}</h3>
-              <p className="text-justify pb-8 font-extralight text-lg">{des}</p>
+              <p className="text-justify pb-8 font-light text-lg">{des}</p>
 
               <div className="flex flex-row w-full items-center justify-between max-xl:mb-3">
                 <div className="flex items-center">
@@ -88,7 +88,7 @@ const Projects = ({
                   ))}
                 </div>
                 <Link href={link} className="flex justify-center items-center">
-                  <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                  <p className="flex lg:text-xl md:text-xs text-sm text-indigo-500">
                     Live project
                   </p>
                   <FaLocationArrow

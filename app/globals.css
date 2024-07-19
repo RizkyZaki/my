@@ -144,6 +144,6 @@
   }
 
   .blogContent {
-    @apply leading-relaxed text-lg text-[#8da8f8] dark:text-[#d5d4f7];
+    @apply leading-relaxed text-lg text-[#2d3447] dark:text-[#d5d4f7];
   }
 }

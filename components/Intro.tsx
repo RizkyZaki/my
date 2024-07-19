@@ -70,7 +70,7 @@ const Intro = () => {
           Hello! I am Zach,
         </div>
         <div className="text-2xl lg:text-4xl my-5 max-sm:ml-3">
-          <p className="leading-snug max-sm:font-extralight  text-[#d9d0fd] dark:text-[#c3cffb]">
+          <p className="leading-snug max-sm:font-extralight text-[#2c2a36] dark:text-[#c3cffb]">
             Hello! im Rizky Zaki, aka Zach. My journey into web development
             began in high school in 2021, marked by victories in provincial and
             district-level competitions. This success propelled me into the
