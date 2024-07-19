@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="https://dev-forces.vercel.app/" target="_blank">
-      <img src="" alt="Project Banner">
+      <img src="https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png" alt="Project Banner">
     </a>
   <br />
 
