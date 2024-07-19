@@ -11,8 +11,8 @@ export async function getBlogContent(slug: string) {
   const res = await octokit.request(
     `GET /repos/{owner}/{repo}/contents/{path}`,
     {
-      owner: "iaryank",
-      repo: "blog-collections",
+      owner: "RizkyZaki",
+      repo: "Blog-Collections",
       path: `blogs/${slug}.mdx`,
     }
   );
@@ -34,8 +34,8 @@ export async function getAllBlogsMetadata() {
   const res = await octokit.request(
     `GET /repos/{owner}/{repo}/contents/{path}`,
     {
-      owner: "iaryank",
-      repo: "blog-collections",
+      owner: "RizkyZaki",
+      repo: "Blog-Collections",
       path: `meta.json`,
     }
   );

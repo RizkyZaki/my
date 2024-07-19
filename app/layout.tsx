@@ -25,7 +25,7 @@ export const metadata: Metadata = {
       "Welcome to Zach portfolio website. Discover my projects, skills, and professional journey. View my resume and contact me for services.",
     images: [
       {
-        url: "https://www.iaryan.tech/opengraph-image.png",
+        url: "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
       },
     ],
   },

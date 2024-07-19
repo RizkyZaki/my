@@ -17,7 +17,7 @@ export const metadata: Metadata = {
       "Read more about Zach, a Computer Science undergraduate with a passion for programming, new technologies, and aspiring to become a Software Development Engineer.",
     images: [
       {
-        url: "https://www.iaryan.tech/opengraph-image.png",
+        url: "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
       },
     ],
   },

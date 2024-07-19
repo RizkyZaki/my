@@ -13,7 +13,7 @@ export const metadata: Metadata = {
       "Creating amazing real life projects have always been an inseparable part of my thills. Get to know about my interesting open source projects with live links, github repository, etc.",
     images: [
       {
-        url: "https://www.iaryan.tech/opengraph-image.png",
+        url: "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
       },
     ],
   },

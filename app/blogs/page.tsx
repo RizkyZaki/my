@@ -16,7 +16,7 @@ export const metadata: Metadata = {
       "Read the blogs that are written by me. Interweaved with informations and my practical knowledge, these blogs will definitely speak something new to you.",
     images: [
       {
-        url: "https://www.iaryan.tech/opengraph-image.png",
+        url: "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
       },
     ],
   },
