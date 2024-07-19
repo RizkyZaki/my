@@ -8,48 +8,58 @@ const octokit = new Octokit({
 });
 
 export async function getBlogContent(slug: string) {
-  const res = await octokit.request(
-    `GET /repos/{owner}/{repo}/contents/{path}`,
-    {
-      owner: "RizkyZaki",
-      repo: "Blog-Collections",
-      path: `blogs/${slug}.mdx`,
+  try {
+    const res = await octokit.request(
+      `GET /repos/{owner}/{repo}/contents/{path}`,
+      {
+        owner: "RizkyZaki",
+        repo: "Blog-Collections",
+        path: `blogs/${slug}.mdx`,
+      }
+    );
+
+    if (Array.isArray(res.data)) {
+      throw new Error("Expected a single file, but received an array.");
     }
-  );
 
-  if (Array.isArray(res.data)) {
-    throw new Error("Expected a single file, but received an array.");
+    if (res.data.type !== "file" || !res.data.content) {
+      throw new Error("Expected a file with content.");
+    }
+
+    const encoded = res.data.content;
+    const decoded = Base64.decode(encoded);
+    return decoded;
+  } catch (error) {
+    console.error("Error fetching blog content:", error);
+    throw error;
   }
-
-  if (res.data.type !== "file" || !res.data.content) {
-    throw new Error("Expected a file with content.");
-  }
-
-  const encoded = res.data.content;
-  const decoded = Base64.decode(encoded);
-  return decoded;
 }
 
 export async function getAllBlogsMetadata() {
-  const res = await octokit.request(
-    `GET /repos/{owner}/{repo}/contents/{path}`,
-    {
-      owner: "RizkyZaki",
-      repo: "Blog-Collections",
-      path: `meta.json`,
+  try {
+    const res = await octokit.request(
+      `GET /repos/{owner}/{repo}/contents/{path}`,
+      {
+        owner: "RizkyZaki",
+        repo: "Blog-Collections",
+        path: `meta.json`,
+      }
+    );
+
+    if (Array.isArray(res.data)) {
+      throw new Error("Expected a single file, but received an array.");
     }
-  );
 
-  if (Array.isArray(res.data)) {
-    throw new Error("Expected a single file, but received an array.");
+    if (res.data.type !== "file" || !res.data.content) {
+      throw new Error("Expected a file with content.");
+    }
+
+    const encoded = res.data.content;
+    const decoded = Base64.decode(encoded);
+    revalidatePath("/blogs");
+    return JSON.parse(decoded);
+  } catch (error) {
+    console.error("Error fetching blogs metadata:", error);
+    throw error;
   }
-
-  if (res.data.type !== "file" || !res.data.content) {
-    throw new Error("Expected a file with content.");
-  }
-
-  const encoded = res.data.content;
-  const decoded = Base64.decode(encoded);
-  revalidatePath("/blogs");
-  return JSON.parse(decoded);
 }
