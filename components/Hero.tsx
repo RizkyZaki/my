@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="flex flex-col items-center justify-center">
           <div className="relative max-md:mt-14" ref={imgRef}>
             <h1 className="max-w-[89vw] md:max-w-2xl lg:max-w-[80vw] text-[6rem] xs:text-[7rem] sm:text-[9rem] md:text-[12rem] lg:text-[15rem] font-semibold bg-gradient-to-r from-blue-700 to-blue-500 dark:from-blue-400 dark:to-blue-200 bg-clip-text text-transparent select-none">
-              Im Zach
+              Sir Zach
             </h1>
             <Image
               src="/images/purple-curve.png"
@@ -69,7 +69,7 @@ const Hero = () => {
           </div>
 
           <h2 className="uppercase tracking-widest max-sm:text-xs text-lg text-center text-black-100 dark:text-blue-100 max-md:mt-8">
-            Hola My name Rizky Zaki Welcome To My Personal Website.
+            Hola My name Rizky Zaki Zulkarnaen Welcome To My Personal Website.
           </h2>
 
           <Link
