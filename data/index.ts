@@ -291,6 +291,14 @@ export const projects = [
     iconLists: ["/python.svg", "/tensorflow.svg"],
     link: "https://github.com/RizkyZaki/hand-signal-recognizer",
   },
+  {
+    id: 28,
+    title: "BagOps Polres Kutai Barat",
+    des: "A News and information website for the operator section of the West Kutai Police",
+    img: "/images/project/bagops.jpg",
+    iconLists: ["/laravel.svg", "/nodejs.svg"],
+    link: "https://github.com/RizkyZaki/hand-signal-recognizer",
+  },
 ];
 
 export const socialMedia = [
