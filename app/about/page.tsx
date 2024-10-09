@@ -83,7 +83,7 @@ const Page = () => {
               className="pt-3 pb-2 px-5 flex items-center justify-center text-blue-500"
             >
               <Linkedin size={18} className="mr-2" />
-              linkedin.com/in/rizkyzaki
+              linkedin.com/in/sirzch
             </Link>
           </div>
 
@@ -146,11 +146,17 @@ const Page = () => {
               <div className="paraHead">Experience 💻</div>
               <div className="paraHeadSecondary">
                 - Software Engineer at PT. Pratama Solusi Teknologi
+                (2023-present)
               </div>
               <div className="paraHeadSecondary">
-                - Member Of Web Divison at CCI Organization
+                - Fullstack Engineer at 80&Company (2024 - Present)
               </div>
-              <div className="paraHeadSecondary">- Web Developer Freelance</div>
+              <div className="paraHeadSecondary">
+                - Member Of Web Divison at CCI Organization (2023 - Present)
+              </div>
+              <div className="paraHeadSecondary">
+                - Web Developer Freelance (2022 - 2024)
+              </div>
               <div className="paraHead">Achievements 🌟</div>
               My list of achievements:
               <div className="paraHeadSecondary">
