@@ -146,13 +146,13 @@ const Page = () => {
               <div className="paraHead">Experience 💻</div>
               <div className="paraHeadSecondary">
                 - Software Engineer at PT. Pratama Solusi Teknologi
-                (2023-present)
+                (2023-2025)
               </div>
               <div className="paraHeadSecondary">
-                - Fullstack Engineer at 80&Company (2024 - Present)
+                - AI Backend Developer at 80&Company OCT-Path (2024 - 2025)
               </div>
               <div className="paraHeadSecondary">
-                - Member Of Web Divison at CCI Organization (2023 - Present)
+                - Fullstack Engineer at 80&Company Erines (2025 - 2025)
               </div>
               <div className="paraHeadSecondary">
                 - Web Developer Freelance (2022 - 2024)
