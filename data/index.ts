@@ -299,6 +299,30 @@ export const projects = [
     iconLists: ["/laravel.svg", "/nodejs.svg"],
     link: "https://github.com/RizkyZaki/hand-signal-recognizer",
   },
+  {
+  id: 29,
+  title: "SIMLPU",
+  des: "A national management system for Universal Postal Services across Indonesia.",
+  img: "/images/project/lpu.png",
+  iconLists: ["/laravel.svg", "/nodejs.svg", "/nextjs.svg", "/tailwind.svg", "mysql.svg"],
+  link: "https://verifikasilpu.komdigi.go.id/auth",
+  },
+  {
+    id: 30,
+    title: "E-Sakip Kab Purwakarta",
+    des: "A performance accountability system for government institutions in Purwakarta Regency.",
+    img: "/images/project/esakip.png",
+    iconLists: ["/laravel.svg", "mysql.svg"],
+    link: "https://esakip.purwakartakab.go.id",
+  },
+  {
+    id: 31,
+    title: "AI Kyujin",
+    des: "An AI-powered job seeker platform with intelligent job matching and recommendations.",
+    img: "/images/project/aikyujin.png",
+    iconLists: ["/php.svg", "postgre.svg", "javascript.svg", "tensorflow.svg"],
+    link: "https://dev.ai-kyujin.jp/login",
+  },
 ];
 
 export const socialMedia = [
