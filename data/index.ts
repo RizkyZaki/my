@@ -323,6 +323,14 @@ export const projects = [
     iconLists: ["/php.svg", "postgre.svg", "javascript.svg", "tensorflow.svg"],
     link: "https://dev.ai-kyujin.jp/login",
   },
+  {
+    id: 32,
+    title: "Oganlopian Website",
+    des: "Purwakarta’s central API hub—versioned REST endpoints (tourism, jobs, public info, transport, Prodeskel) with RBAC, dev-only docs, email verification, and an admin dashboard.",
+    img: "/images/project/ogan.png",
+    iconLists: ["/php.svg", "postgre.svg", "vuejs.svg", "shadcn-ui.svg","livewire.svg", "tailwind.svg"],
+    link: "https://oganlopian.purwakartakab.go.id",
+  },
 ];
 
 export const socialMedia = [
