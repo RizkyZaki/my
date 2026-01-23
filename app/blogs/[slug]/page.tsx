@@ -25,8 +25,8 @@ export default function BlogPage({
   }, [params.slug]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-[#09090B] dark:via-[#09090B] dark:to-black pt-28 pb-20">
-      <div className="max-w-5xl mx-auto px-4 md:px-6 lg:px-8">
+    <div className="min-h-screen bg-white dark:bg-black pt-28 pb-20">
+      <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-12">
         <header className="mb-12">
           <Link 
             href="/blogs"
@@ -78,32 +78,55 @@ export default function BlogPage({
               </div>
             )}
           </div>
-
-          {metadata?.img && (
-            <div className="mt-8 rounded-3xl overflow-hidden shadow-2xl border-2 border-gray-200 dark:border-gray-800/50 relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-              <img 
-                src={metadata.img} 
-                alt={metadata.title || 'Blog image'}
-                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-          )}
         </header>
 
         <article className="relative">
-          <div className="absolute -top-20 -left-20 w-72 h-72 bg-indigo-500/10 dark:bg-indigo-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute top-1/3 -right-20 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 -left-32 w-80 h-80 bg-pink-500/10 dark:bg-pink-500/10 rounded-full blur-3xl"></div>
-
-          <div className="relative z-10 bg-white/80 dark:bg-gradient-to-br dark:from-gray-900/50 dark:via-gray-900/30 dark:to-gray-900/50 backdrop-blur-sm border border-gray-200 dark:border-gray-800/50 rounded-3xl p-8 md:p-12 shadow-2xl">
-            <Markdown
-              rehypePlugins={[rehypeRaw]}
-              className="blogContent prose prose-lg dark:prose-invert max-w-none prose-headings:font-bold prose-headings:bg-gradient-to-r prose-headings:from-indigo-600 prose-headings:to-purple-600 dark:prose-headings:from-indigo-400 dark:prose-headings:to-purple-400 prose-headings:bg-clip-text prose-headings:text-transparent prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-8 prose-h2:pb-3 prose-h2:border-b prose-h2:border-indigo-300 dark:prose-h2:border-indigo-500/30 prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-6 prose-p:text-gray-700 dark:prose-p:text-gray-300 prose-p:leading-relaxed prose-p:mb-6 prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:no-underline prose-a:font-semibold hover:prose-a:text-indigo-700 dark:hover:prose-a:text-indigo-300 hover:prose-a:underline prose-a:transition-all prose-a:decoration-2 prose-a:underline-offset-4 prose-strong:text-purple-700 dark:prose-strong:text-purple-400 prose-strong:font-bold prose-em:text-pink-700 dark:prose-em:text-pink-400 prose-em:italic prose-code:text-indigo-700 dark:prose-code:text-indigo-300 prose-code:bg-indigo-100 dark:prose-code:bg-gray-800/80 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-sm prose-code:border prose-code:border-indigo-200 dark:prose-code:border-indigo-500/30 prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 prose-pre:border prose-pre:border-gray-300 dark:prose-pre:border-gray-800 prose-pre:rounded-2xl prose-pre:shadow-xl prose-pre:p-6 prose-blockquote:border-l-4 prose-blockquote:border-indigo-500 prose-blockquote:bg-indigo-50 dark:prose-blockquote:bg-indigo-500/5 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:italic prose-blockquote:text-gray-700 dark:prose-blockquote:text-gray-300 prose-blockquote:shadow-lg prose-ul:space-y-3 prose-ul:my-6 prose-ol:space-y-3 prose-ol:my-6 prose-li:text-gray-700 dark:prose-li:text-gray-300 prose-li:leading-relaxed prose-li::marker:text-indigo-600 dark:prose-li::marker:text-indigo-400 prose-li::marker:font-bold prose-img:rounded-2xl prose-img:shadow-2xl prose-img:border-2 prose-img:border-gray-200 dark:prose-img:border-gray-800 prose-img:my-8 prose-hr:border-gray-300 dark:prose-hr:border-gray-800 prose-hr:my-12 prose-table:border-2 prose-table:border-gray-300 dark:prose-table:border-gray-800 prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-xl prose-th:bg-gradient-to-r prose-th:from-indigo-100 prose-th:to-purple-100 dark:prose-th:from-indigo-900/50 dark:prose-th:to-purple-900/50 prose-th:text-indigo-700 dark:prose-th:text-indigo-300 prose-th:font-bold prose-th:p-4 prose-td:border-gray-300 dark:prose-td:border-gray-800 prose-td:p-4 prose-td:text-gray-700 dark:prose-td:text-gray-300"
-            >
-              {blog}
-            </Markdown>
-          </div>
+          <Markdown
+            rehypePlugins={[rehypeRaw]}
+            className="blogContent prose prose-lg dark:prose-invert max-w-none
+              prose-headings:font-bold 
+              prose-headings:bg-gradient-to-r prose-headings:from-indigo-600 prose-headings:to-purple-600 
+              dark:prose-headings:from-indigo-400 dark:prose-headings:to-purple-400 
+              prose-headings:bg-clip-text prose-headings:text-transparent 
+              prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 
+              prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-8 prose-h2:pb-3 prose-h2:border-b prose-h2:border-indigo-300/50 dark:prose-h2:border-indigo-500/30 
+              prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-6 
+              prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed prose-p:mb-6 
+              prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:no-underline prose-a:font-semibold 
+              hover:prose-a:text-indigo-700 dark:hover:prose-a:text-indigo-300 hover:prose-a:underline 
+              prose-a:transition-all prose-a:decoration-2 prose-a:underline-offset-4 
+              prose-strong:text-purple-700 dark:prose-strong:text-purple-300 prose-strong:font-bold 
+              prose-em:text-pink-700 dark:prose-em:text-pink-300 prose-em:italic 
+              prose-code:text-indigo-700 dark:prose-code:text-indigo-300 
+              prose-code:bg-indigo-100/80 dark:prose-code:bg-indigo-950/50 
+              prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-sm 
+              prose-code:border prose-code:border-indigo-200/50 dark:prose-code:border-indigo-800/50 
+              prose-pre:bg-gray-100 dark:prose-pre:bg-gray-950 
+              prose-pre:border-2 prose-pre:border-gray-300 dark:prose-pre:border-gray-800 
+              prose-pre:rounded-2xl prose-pre:shadow-xl prose-pre:p-6 
+              prose-blockquote:border-l-4 prose-blockquote:border-indigo-500 
+              prose-blockquote:bg-indigo-50/50 dark:prose-blockquote:bg-indigo-950/30 
+              prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:italic 
+              prose-blockquote:text-gray-800 dark:prose-blockquote:text-gray-200 
+              prose-blockquote:shadow-lg 
+              prose-ul:space-y-3 prose-ul:my-6 
+              prose-ol:space-y-3 prose-ol:my-6 
+              prose-li:text-gray-800 dark:prose-li:text-gray-200 prose-li:leading-relaxed 
+              prose-li::marker:text-indigo-600 dark:prose-li::marker:text-indigo-400 prose-li::marker:font-bold 
+              prose-img:rounded-2xl prose-img:shadow-2xl 
+              prose-img:border-2 prose-img:border-gray-300 dark:prose-img:border-gray-800 
+              prose-img:my-8 
+              prose-hr:border-gray-300 dark:prose-hr:border-gray-800 prose-hr:my-12 
+              prose-table:border-2 prose-table:border-gray-300 dark:prose-table:border-gray-800 
+              prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-xl 
+              prose-th:bg-gradient-to-r prose-th:from-indigo-100 prose-th:to-purple-100 
+              dark:prose-th:from-indigo-950/50 dark:prose-th:to-purple-950/50 
+              prose-th:text-indigo-700 dark:prose-th:text-indigo-300 prose-th:font-bold prose-th:p-4 
+              prose-td:border-gray-300 dark:prose-td:border-gray-800 prose-td:p-4 
+              prose-td:text-gray-800 dark:prose-td:text-gray-200"
+          >
+            {blog}
+          </Markdown>
         </article>
 
         <footer className="mt-16 pt-8 border-t border-gray-300 dark:border-gray-800/50">
