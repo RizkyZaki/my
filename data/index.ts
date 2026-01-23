@@ -331,6 +331,22 @@ export const projects = [
     iconLists: ["/php.svg", "postgre.svg", "vuejs.svg", "shadcn-ui.svg","livewire.svg", "tailwind.svg"],
     link: "https://oganlopian.purwakartakab.go.id",
   },
+  {
+    id: 33,
+    title: "Berbagi Link",
+    des: "Event management platform that allows users to create, share, and manage event links efficiently. Features include event creation, link generation, attendee management, and real-time event tracking.",
+    img: "/images/project/berbagi.png",
+    iconLists: ["/laravel.svg", "/javascript.svg"],
+    link: "https://berbagi.link",
+  },
+  {
+    id: 34,
+    title: "Dashboard Kode Pengiriman",
+    des: "Interactive map application for viewing postal codes across Indonesia with an integrated delivery code generator. Features include nationwide postal code search, interactive maps, automated delivery code generation, and comprehensive location-based postal data.",
+    img: "/images/project/kodepos.png",
+    iconLists: ["/shadcn-ui.svg", "/livewire.svg", "/php.svg", "/javascript.svg", "/postgre.svg"],
+    link: "https://www.poskodeid.com/",
+  },
 ];
 
 export const socialMedia = [

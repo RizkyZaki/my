@@ -63,3 +63,13 @@ export async function getAllBlogsMetadata() {
     throw error;
   }
 }
+
+export async function getBlogMetadata(slug: string) {
+  try {
+    const allMetadata = await getAllBlogsMetadata();
+    return allMetadata.find((meta: any) => meta.slug === slug);
+  } catch (error) {
+    console.error("Error fetching blog metadata:", error);
+    return null;
+  }
+}
