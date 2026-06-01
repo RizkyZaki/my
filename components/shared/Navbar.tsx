@@ -9,7 +9,7 @@ import {
 import { cn } from "@/utils/cn";
 import Link from "next/link";
 import MobileNav from "./MobileNav";
-import { Home, Laptop2, Mail, NotebookText, Share2, User } from "lucide-react";
+import { Home, Laptop2, Mail, NotebookText, Share2, User, Wrench } from "lucide-react";
 import FullScreenToggle from "./FullScreenToggle";
 import ThemeToggle from "./ThemeToggle";
 import ShareButton from "../ShareButton";
@@ -97,6 +97,19 @@ function Navigationbar({ className }: { className?: string }) {
                   img={<NotebookText size={18} />}
                 ></MenuItem>
               </Link>
+
+              <a
+                href="https://tools.zxch.my.id"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <MenuItem
+                  setActive={setActive}
+                  active={active}
+                  item="Tools"
+                  img={<Wrench size={18} />}
+                ></MenuItem>
+              </a>
             </Menu>
           </div>
 

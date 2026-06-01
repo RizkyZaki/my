@@ -30,18 +30,33 @@ const MobileNav = () => {
           <div>
             {navItems.map((navItem: any, idx: number) => (
               <SheetClose key={idx} asChild>
-                <Link
-                  key={`link=${idx}`}
-                  href={navItem.link}
-                  className={cn(
-                    "relative text-neutral-50 items-center flex space-x-2 hover:text-neutral-300 py-3 mr-5"
-                  )}
-                >
-                  <navItem.icon className="mr-4" />
-                  <span className="cursor-pointer text-2xl">
-                    {navItem.name}
-                  </span>
-                </Link>
+                {navItem.link.startsWith("http") ? (
+                  <a
+                    href={navItem.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "relative text-neutral-50 items-center flex space-x-2 hover:text-neutral-300 py-3 mr-5"
+                    )}
+                  >
+                    <navItem.icon className="mr-4" />
+                    <span className="cursor-pointer text-2xl">
+                      {navItem.name}
+                    </span>
+                  </a>
+                ) : (
+                  <Link
+                    href={navItem.link}
+                    className={cn(
+                      "relative text-neutral-50 items-center flex space-x-2 hover:text-neutral-300 py-3 mr-5"
+                    )}
+                  >
+                    <navItem.icon className="mr-4" />
+                    <span className="cursor-pointer text-2xl">
+                      {navItem.name}
+                    </span>
+                  </Link>
+                )}
               </SheetClose>
             ))}
           </div>

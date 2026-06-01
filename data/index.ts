@@ -1,4 +1,4 @@
-import { Home, Laptop2, Mail, NotebookText, User } from "lucide-react";
+import { Home, Laptop2, Mail, NotebookText, User, Wrench } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export const navItems = [
@@ -7,6 +7,7 @@ export const navItems = [
   { name: "Projects", link: "/projects", icon: Laptop2 },
   { name: "Contact", link: "#contact", icon: Mail },
   { name: "Blogs", link: "/blogs", icon: NotebookText },
+  { name: "Tools", link: "https://tools.zxch.my.id", icon: Wrench },
 ];
 
 export const languageSkills = [
