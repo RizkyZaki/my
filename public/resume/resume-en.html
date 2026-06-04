@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizky Zaki Zulkarnaen – Resume (EN)</title>
+  <style>
+    /* ─── Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #f0f2f5;
+      line-height: 1.5;
+    }
+
+    a { color: #1a56db; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Print Button ──────────────────────────────── */
+    .print-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1e293b;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      gap: 12px;
+    }
+    .print-bar span {
+      color: #94a3b8;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+    }
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-print { background: #3b82f6; color: #fff; }
+    .btn-id { background: #475569; color: #e2e8f0; }
+
+    /* ─── Page wrapper ──────────────────────────────── */
+    .page {
+      max-width: 820px;
+      margin: 60px auto 40px;
+      background: #fff;
+      padding: 44px 52px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+
+    /* ─── Header ────────────────────────────────────── */
+    .header { border-bottom: 2.5px solid #1a56db; padding-bottom: 16px; margin-bottom: 20px; }
+    .header h1 { font-size: 26pt; font-weight: 700; color: #0f172a; letter-spacing: -.3px; }
+    .header .tagline { font-size: 12pt; color: #475569; margin-top: 3px; font-weight: 600; }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      margin-top: 10px;
+      font-size: 9.5pt;
+      color: #334155;
+    }
+    .contact-row span { white-space: nowrap; }
+
+    /* ─── Section ───────────────────────────────────── */
+    section { margin-bottom: 20px; }
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #1a56db;
+      border-bottom: 1.5px solid #dbeafe;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ─── Experience / Education entries ───────────── */
+    .entry { margin-bottom: 14px; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .entry-title { font-weight: 700; font-size: 10.5pt; color: #0f172a; }
+    .entry-org { font-weight: 600; font-size: 10pt; color: #1a56db; }
+    .entry-date { font-size: 9.5pt; color: #64748b; white-space: nowrap; }
+    .entry-body { margin-top: 4px; font-size: 10pt; color: #334155; }
+    .entry-body ul { padding-left: 16px; margin-top: 4px; }
+    .entry-body li { margin-bottom: 3px; }
+
+    /* ─── Skills ────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      row-gap: 6px;
+      font-size: 10pt;
+    }
+    .skill-label { font-weight: 700; color: #0f172a; }
+    .skill-value { color: #334155; }
+
+    /* ─── Projects ──────────────────────────────────── */
+    .project-entry { margin-bottom: 10px; }
+    .project-title { font-weight: 700; font-size: 10pt; }
+    .project-tech { font-size: 9pt; color: #64748b; font-style: italic; }
+    .project-desc { font-size: 10pt; color: #334155; margin-top: 2px; }
+
+    /* ─── Achievements ──────────────────────────────── */
+    .ach-list { list-style: none; padding: 0; }
+    .ach-list li {
+      font-size: 10pt;
+      color: #334155;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+    .ach-list li::before { content: "▸"; position: absolute; left: 0; color: #1a56db; }
+
+    /* ─── Two-col for Skills + Achievements ────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+
+    /* ─── Print Styles ──────────────────────────────── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm 14mm 14mm 14mm;
+      }
+      body { background: #fff; font-size: 10pt; }
+      .print-bar { display: none !important; }
+      .page {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+      a { color: #1a56db; }
+      .entry { page-break-inside: avoid; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Print bar (hidden on print) -->
+<div class="print-bar">
+  <span>Rizky Zaki Zulkarnaen · Resume EN</span>
+  <div class="btn-group">
+    <a href="resume-id.html"><button class="btn btn-id">Bahasa Indonesia</button></a>
+    <button class="btn btn-print" onclick="window.print()">Print / Save as PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <h1>Rizky Zaki Zulkarnaen</h1>
+    <div class="tagline">Software Engineer · Full-Stack Developer</div>
+    <div class="contact-row">
+      <span>Bandung, Indonesia</span>
+      <span>|</span>
+      <span><a href="mailto:rizkyzaki682@gmail.com">rizkyzaki682@gmail.com</a></span>
+      <span>|</span>
+      <span><a href="https://github.com/RizkyZaki" target="_blank">github.com/RizkyZaki</a></span>
+      <span>|</span>
+      <span><a href="https://www.linkedin.com/in/rizkyzaki/" target="_blank">linkedin.com/in/rizkyzaki</a></span>
+      <span>|</span>
+      <span><a href="https://zxch.my.id" target="_blank">zxch.my.id</a></span>
+    </div>
+  </header>
+
+  <!-- ── Summary ── -->
+  <section>
+    <div class="section-title">Professional Summary</div>
+    <p style="font-size:10.5pt;color:#334155;">
+      Results-driven Software Engineer with 3+ years of professional experience building scalable web and mobile applications. Proven track record leading engineering teams and delivering government-scale systems. Currently pursuing a Bachelor's degree in Information Systems at Telkom University (GPA 3.51). Passionate about clean architecture, RESTful APIs, and emerging AI technologies.
+    </p>
+  </section>
+
+  <!-- ── Skills + Achievements (two-col) ── -->
+  <div class="two-col">
+    <section>
+      <div class="section-title">Technical Skills</div>
+      <div class="skills-grid">
+        <span class="skill-label">Languages</span>
+        <span class="skill-value">TypeScript, JavaScript, PHP, Python, Java, Kotlin, C++, C</span>
+        <span class="skill-label">Frameworks</span>
+        <span class="skill-value">Next.js, React, Laravel, Node.js, Express, Tailwind CSS, Vue.js, Flutter</span>
+        <span class="skill-label">Databases</span>
+        <span class="skill-value">MySQL, PostgreSQL, Prisma ORM</span>
+        <span class="skill-label">Tools</span>
+        <span class="skill-value">Git, GitHub, Docker, Postman, Figma</span>
+        <span class="skill-label">Concepts</span>
+        <span class="skill-value">RESTful APIs, OOP, DSA, CI/CD, Blockchain, Scalable Systems</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Achievements</div>
+      <ul class="ach-list">
+        <li>1st Place – LKS District Web Technologies Competition</li>
+        <li>5th Place – LKS Province Web Technologies Competition</li>
+        <li>Best Product – CCI the Hack Hackathon</li>
+        <li>1st Place – Innovation IT Industries (Coderex)</li>
+        <li>Finalist – Cyvero 2024, Telkom University</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ── Experience ── -->
+  <section>
+    <div class="section-title">Professional Experience</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">IT Support &amp; Helpdesk – TOSS (Telkom One Stop Service)</div>
+          <div class="entry-org">Telkom University</div>
+        </div>
+        <div class="entry-date">Sept 2025 – Present</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Provided technical support for an internal digital correspondence platform used university-wide.</li>
+          <li>Handled user issue resolution, system monitoring, and cross-team coordination to maintain high availability.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Fullstack Intern</div>
+          <div class="entry-org">PT Amanah Karya Indonesia</div>
+        </div>
+        <div class="entry-date">Aug – Dec 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Developed Widget Amanah feature end-to-end, covering frontend UI and backend API integration.</li>
+          <li>Ensured data accuracy, system security, and alignment with business requirements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Head of Software Engineer</div>
+          <div class="entry-org">PT Efort Digital Multisolution</div>
+        </div>
+        <div class="entry-date">Jun 2025 – May 2026</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Led engineering team in designing, developing, and maintaining scalable web and application systems.</li>
+          <li>Responsible for system architecture, code quality standards, and development workflow governance.</li>
+          <li>Coordinated with product, UI/UX, and stakeholder teams to align technology with business goals.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Lead Software Engineer</div>
+          <div class="entry-org">80&amp;Co (Erines)</div>
+        </div>
+        <div class="entry-date">Apr – Nov 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Architected and led delivery of software projects, ensuring timely and quality releases.</li>
+          <li>Set coding standards, testing practices, CI/CD pipelines, and agile development workflows.</li>
+          <li>Collaborated with product managers and designers to define technical requirements and priorities.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">AI Backend Developer</div>
+          <div class="entry-org">80&amp;Co (OCT-Path)</div>
+        </div>
+        <div class="entry-date">Sept 2024 – Feb 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Built and maintained RESTful APIs and server-side logic for a next-generation HR management platform.</li>
+          <li>Integrated Blockchain technology into a remote worker management system.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Software Engineer</div>
+          <div class="entry-org">PT. Pratama Teknologi Solusi</div>
+        </div>
+        <div class="entry-date">May 2023 – May 2026</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Designed, developed, and maintained scalable web and mobile applications for various government and commercial clients.</li>
+          <li>Delivered 10+ production projects including government portals, LMS platforms, and e-commerce systems.</li>
+          <li>Participated in code reviews, performance optimization, and cross-functional collaboration.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Education ── -->
+  <section>
+    <div class="section-title">Education</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Bachelor of Information Systems</div>
+          <div class="entry-org">Telkom University, Bandung</div>
+        </div>
+        <div class="entry-date">2023 – Present</div>
+      </div>
+      <div class="entry-body">GPA: 3.51 / 4.00</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Vocational High School – Software Engineering</div>
+          <div class="entry-org">SMK Bina Kerja</div>
+        </div>
+        <div class="entry-date">Graduated 2023</div>
+      </div>
+      <div class="entry-body">Final Score: 89.6%</div>
+    </div>
+  </section>
+
+  <!-- ── Selected Projects ── -->
+  <section>
+    <div class="section-title">Selected Projects</div>
+
+    <div class="project-entry">
+      <span class="project-title">SIMLPU – National Postal Service Management System</span>
+      <span class="project-tech"> · Laravel, Next.js, MySQL, Node.js</span>
+      <div class="project-desc">National management system for Universal Postal Services across Indonesia, commissioned by Komdigi. <a href="https://verifikasilpu.komdigi.go.id/auth" target="_blank">verifikasilpu.komdigi.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">AI Kyujin – AI-Powered Job Seeker Platform</span>
+      <span class="project-tech"> · PHP, PostgreSQL, TensorFlow, JavaScript</span>
+      <div class="project-desc">Intelligent job-matching and recommendation platform integrating machine learning. <a href="https://dev.ai-kyujin.jp/login" target="_blank">ai-kyujin.jp</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Oganlopian – Purwakarta Central API Hub</span>
+      <span class="project-tech"> · PHP, PostgreSQL, Vue.js, Livewire, Tailwind CSS</span>
+      <div class="project-desc">Versioned REST endpoints (tourism, jobs, transport, Prodeskel) with RBAC, email verification, and admin dashboard. <a href="https://oganlopian.purwakartakab.go.id" target="_blank">oganlopian.purwakartakab.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Kejari Purwakarta – Government Service Web &amp; Mobile</span>
+      <span class="project-tech"> · Laravel, MySQL, Flutter/Dart</span>
+      <div class="project-desc">Public prosecutor's office service website and Android application. <a href="https://kejari-purwakarta.kejaksaan.go.id" target="_blank">kejari-purwakarta.kejaksaan.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Templatenesia – Digital Marketplace</span>
+      <span class="project-tech"> · Laravel, Livewire, Tailwind CSS, MySQL, iPaymu</span>
+      <div class="project-desc">Marketplace for website templates, plugins, and graphics with integrated payment gateway. <a href="https://templatenesia.com" target="_blank">templatenesia.com</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Green Cure – Plant Disease Detection App</span>
+      <span class="project-tech"> · Next.js, AdonisJS, Node.js, TensorFlow</span>
+      <div class="project-desc">Startup competition project: AI-powered app that detects plant diseases via image scanning. Team leader &amp; full-stack developer. <a href="https://green-cure.netlify.app" target="_blank">green-cure.netlify.app</a></div>
+    </div>
+  </section>
+
+</div><!-- /.page -->
+</body>
+</html>

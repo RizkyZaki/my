@@ -254,7 +254,7 @@ const Page = () => {
                     </p>
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400 font-medium ml-4">
-                    Jun - Dec 2025
+                    Jun 2025 - May 2026
                   </span>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
@@ -314,7 +314,7 @@ const Page = () => {
                     </p>
                   </div>
                   <span className="text-sm text-gray-600 dark:text-gray-400 font-medium ml-4">
-                    May 2023 - Sept 2025
+                    May 2023 - May 2026
                   </span>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">

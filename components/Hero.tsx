@@ -73,9 +73,8 @@ const Hero = () => {
           </h2>
 
           <Link
-            href="https://zach-resume.vercel.app/"
+            href="/resume/"
             className="max-md:mt-10 max-sm:w-full max-xs:px-5"
-            target="_blank"
           >
             <MagicButton
               title="Resume"

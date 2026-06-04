@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizky Zaki – Resume</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0f172a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 16px;
+      padding: 48px 52px;
+      text-align: center;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    h1 { color: #f1f5f9; font-size: 22pt; font-weight: 700; }
+    .sub { color: #94a3b8; margin-top: 6px; font-size: 11pt; }
+    .divider { height: 1px; background: #334155; margin: 28px 0; }
+    p { color: #cbd5e1; font-size: 10.5pt; margin-bottom: 28px; }
+    .btn-group { display: flex; flex-direction: column; gap: 12px; }
+    .btn {
+      display: block;
+      padding: 14px 24px;
+      border-radius: 10px;
+      font-size: 11pt;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .15s, opacity .15s;
+    }
+    .btn:hover { transform: translateY(-2px); opacity: .9; }
+    .btn-en  { background: #3b82f6; color: #fff; }
+    .btn-id  { background: #6366f1; color: #fff; }
+    .footer  { margin-top: 28px; color: #475569; font-size: 9pt; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Rizky Zaki Zulkarnaen</h1>
+    <div class="sub">Software Engineer · Full-Stack Developer</div>
+    <div class="divider"></div>
+    <p>Pilih bahasa resume kamu / Choose your resume language:</p>
+    <div class="btn-group">
+      <a href="resume-en.html" class="btn btn-en">English Resume</a>
+      <a href="resume-id.html" class="btn btn-id">CV Bahasa Indonesia</a>
+    </div>
+    <div class="footer">
+      github.com/RizkyZaki &nbsp;·&nbsp; zxch.my.id
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rizky Zaki Zulkarnaen – CV (ID)</title>
+  <style>
+    /* ─── Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11pt;
+      color: #1a1a1a;
+      background: #f0f2f5;
+      line-height: 1.5;
+    }
+
+    a { color: #1a56db; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ─── Print Button ──────────────────────────────── */
+    .print-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1e293b;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      gap: 12px;
+    }
+    .print-bar span {
+      color: #94a3b8;
+      font-size: 12px;
+      font-family: Arial, sans-serif;
+    }
+    .btn-group { display: flex; gap: 8px; }
+    .btn {
+      padding: 6px 16px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-print { background: #3b82f6; color: #fff; }
+    .btn-en { background: #475569; color: #e2e8f0; }
+
+    /* ─── Page wrapper ──────────────────────────────── */
+    .page {
+      max-width: 820px;
+      margin: 60px auto 40px;
+      background: #fff;
+      padding: 44px 52px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.12);
+    }
+
+    /* ─── Header ────────────────────────────────────── */
+    .header { border-bottom: 2.5px solid #1a56db; padding-bottom: 16px; margin-bottom: 20px; }
+    .header h1 { font-size: 26pt; font-weight: 700; color: #0f172a; letter-spacing: -.3px; }
+    .header .tagline { font-size: 12pt; color: #475569; margin-top: 3px; font-weight: 600; }
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      margin-top: 10px;
+      font-size: 9.5pt;
+      color: #334155;
+    }
+    .contact-row span { white-space: nowrap; }
+
+    /* ─── Section ───────────────────────────────────── */
+    section { margin-bottom: 20px; }
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      color: #1a56db;
+      border-bottom: 1.5px solid #dbeafe;
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    /* ─── Experience / Education entries ───────────── */
+    .entry { margin-bottom: 14px; }
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .entry-title { font-weight: 700; font-size: 10.5pt; color: #0f172a; }
+    .entry-org { font-weight: 600; font-size: 10pt; color: #1a56db; }
+    .entry-date { font-size: 9.5pt; color: #64748b; white-space: nowrap; }
+    .entry-body { margin-top: 4px; font-size: 10pt; color: #334155; }
+    .entry-body ul { padding-left: 16px; margin-top: 4px; }
+    .entry-body li { margin-bottom: 3px; }
+
+    /* ─── Skills ────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      row-gap: 6px;
+      font-size: 10pt;
+    }
+    .skill-label { font-weight: 700; color: #0f172a; }
+    .skill-value { color: #334155; }
+
+    /* ─── Projects ──────────────────────────────────── */
+    .project-entry { margin-bottom: 10px; }
+    .project-title { font-weight: 700; font-size: 10pt; }
+    .project-tech { font-size: 9pt; color: #64748b; font-style: italic; }
+    .project-desc { font-size: 10pt; color: #334155; margin-top: 2px; }
+
+    /* ─── Achievements ──────────────────────────────── */
+    .ach-list { list-style: none; padding: 0; }
+    .ach-list li {
+      font-size: 10pt;
+      color: #334155;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 5px;
+    }
+    .ach-list li::before { content: "▸"; position: absolute; left: 0; color: #1a56db; }
+
+    /* ─── Two-col for Skills + Achievements ────────── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 0 36px; }
+
+    /* ─── Print Styles ──────────────────────────────── */
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm 14mm 14mm 14mm;
+      }
+      body { background: #fff; font-size: 10pt; }
+      .print-bar { display: none !important; }
+      .page {
+        margin: 0;
+        padding: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+      a { color: #1a56db; }
+      .entry { page-break-inside: avoid; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Print bar (hidden on print) -->
+<div class="print-bar">
+  <span>Rizky Zaki Zulkarnaen · CV Bahasa Indonesia</span>
+  <div class="btn-group">
+    <a href="resume-en.html"><button class="btn btn-en">English</button></a>
+    <button class="btn btn-print" onclick="window.print()">Cetak / Simpan PDF</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <h1>Rizky Zaki Zulkarnaen</h1>
+    <div class="tagline">Software Engineer · Full-Stack Developer</div>
+    <div class="contact-row">
+      <span>Bandung, Indonesia</span>
+      <span>|</span>
+      <span><a href="mailto:rizkyzaki682@gmail.com">rizkyzaki682@gmail.com</a></span>
+      <span>|</span>
+      <span><a href="https://github.com/RizkyZaki" target="_blank">github.com/RizkyZaki</a></span>
+      <span>|</span>
+      <span><a href="https://www.linkedin.com/in/rizkyzaki/" target="_blank">linkedin.com/in/rizkyzaki</a></span>
+      <span>|</span>
+      <span><a href="https://zxch.my.id" target="_blank">zxch.my.id</a></span>
+    </div>
+  </header>
+
+  <!-- ── Profil Singkat ── -->
+  <section>
+    <div class="section-title">Profil Singkat</div>
+    <p style="font-size:10.5pt;color:#334155;">
+      Software Engineer berpengalaman 3+ tahun dalam membangun aplikasi web dan mobile yang skalabel. Memiliki rekam jejak memimpin tim engineering dan mengantarkan sistem berskala nasional. Saat ini menempuh studi S1 Sistem Informasi di Universitas Telkom (IPK 3.51). Passionate terhadap arsitektur bersih, RESTful API, dan teknologi kecerdasan buatan.
+    </p>
+  </section>
+
+  <!-- ── Keahlian + Prestasi (two-col) ── -->
+  <div class="two-col">
+    <section>
+      <div class="section-title">Keahlian Teknis</div>
+      <div class="skills-grid">
+        <span class="skill-label">Bahasa</span>
+        <span class="skill-value">TypeScript, JavaScript, PHP, Python, Java, Kotlin, C++, C</span>
+        <span class="skill-label">Framework</span>
+        <span class="skill-value">Next.js, React, Laravel, Node.js, Express, Tailwind CSS, Vue.js, Flutter</span>
+        <span class="skill-label">Database</span>
+        <span class="skill-value">MySQL, PostgreSQL, Prisma ORM</span>
+        <span class="skill-label">Alat</span>
+        <span class="skill-value">Git, GitHub, Docker, Postman, Figma</span>
+        <span class="skill-label">Konsep</span>
+        <span class="skill-value">RESTful API, OOP, DSA, CI/CD, Blockchain, Sistem Skalabel</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Prestasi</div>
+      <ul class="ach-list">
+        <li>Juara 1 – LKS Tingkat Kabupaten Web Technologies</li>
+        <li>Juara 5 – LKS Tingkat Provinsi Web Technologies</li>
+        <li>Best Product – Hackathon CCI the Hack</li>
+        <li>Juara 1 – Innovation IT Industries (Coderex)</li>
+        <li>Finalis – Cyvero 2024 Universitas Telkom</li>
+      </ul>
+    </section>
+  </div>
+
+  <!-- ── Pengalaman ── -->
+  <section>
+    <div class="section-title">Pengalaman Kerja</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">IT Support &amp; Helpdesk – TOSS (Telkom One Stop Service)</div>
+          <div class="entry-org">Universitas Telkom</div>
+        </div>
+        <div class="entry-date">Sept 2025 – Sekarang</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Memberikan dukungan teknis untuk platform korespondensi digital internal yang digunakan secara menyeluruh di lingkungan universitas.</li>
+          <li>Menangani penyelesaian masalah pengguna, pemantauan sistem, dan koordinasi lintas tim demi menjaga ketersediaan layanan.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Fullstack Intern</div>
+          <div class="entry-org">PT Amanah Karya Indonesia</div>
+        </div>
+        <div class="entry-date">Agu – Des 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Mengembangkan fitur Widget Amanah secara end-to-end, mencakup tampilan frontend dan integrasi API backend.</li>
+          <li>Memastikan akurasi data, keamanan sistem, dan kesesuaian dengan kebutuhan bisnis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Kepala Software Engineer</div>
+          <div class="entry-org">PT Efort Digital Multisolution</div>
+        </div>
+        <div class="entry-date">Jun 2025 – Mei 2026</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Memimpin tim engineering dalam merancang, membangun, dan memelihara sistem web dan aplikasi yang skalabel.</li>
+          <li>Bertanggung jawab atas arsitektur sistem, standar kualitas kode, dan tata kelola alur pengembangan.</li>
+          <li>Berkoordinasi dengan tim produk, UI/UX, dan pemangku kepentingan agar solusi teknologi selaras dengan tujuan bisnis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Lead Software Engineer</div>
+          <div class="entry-org">80&amp;Co (Erines)</div>
+        </div>
+        <div class="entry-date">Apr – Nov 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Merancang arsitektur dan memimpin pengiriman proyek perangkat lunak secara tepat waktu dan berkualitas.</li>
+          <li>Menetapkan standar penulisan kode, praktik pengujian, pipeline CI/CD, dan alur pengembangan agile.</li>
+          <li>Berkolaborasi dengan product manager dan desainer untuk mendefinisikan kebutuhan dan prioritas teknis.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">AI Backend Developer</div>
+          <div class="entry-org">80&amp;Co (OCT-Path)</div>
+        </div>
+        <div class="entry-date">Sept 2024 – Feb 2025</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Membangun dan memelihara RESTful API serta logika sisi server untuk platform manajemen SDM generasi berikutnya.</li>
+          <li>Mengintegrasikan teknologi Blockchain ke dalam sistem manajemen pekerja jarak jauh.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">Software Engineer</div>
+          <div class="entry-org">PT. Pratama Teknologi Solusi</div>
+        </div>
+        <div class="entry-date">Mei 2023 – Mei 2026</div>
+      </div>
+      <div class="entry-body">
+        <ul>
+          <li>Merancang, membangun, dan memelihara aplikasi web dan mobile yang skalabel untuk berbagai klien pemerintah dan komersial.</li>
+          <li>Menyelesaikan 10+ proyek produksi, termasuk portal pemerintah, platform LMS, dan sistem e-commerce.</li>
+          <li>Aktif dalam code review, optimasi performa, dan kolaborasi lintas fungsi.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pendidikan ── -->
+  <section>
+    <div class="section-title">Pendidikan</div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">S1 Sistem Informasi</div>
+          <div class="entry-org">Universitas Telkom, Bandung</div>
+        </div>
+        <div class="entry-date">2023 – Sekarang</div>
+      </div>
+      <div class="entry-body">IPK: 3.51 / 4.00</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-header">
+        <div>
+          <div class="entry-title">SMK – Rekayasa Perangkat Lunak</div>
+          <div class="entry-org">SMK Bina Kerja</div>
+        </div>
+        <div class="entry-date">Lulus 2023</div>
+      </div>
+      <div class="entry-body">Nilai Akhir: 89.6%</div>
+    </div>
+  </section>
+
+  <!-- ── Proyek Unggulan ── -->
+  <section>
+    <div class="section-title">Proyek Unggulan</div>
+
+    <div class="project-entry">
+      <span class="project-title">SIMLPU – Sistem Manajemen Layanan Pos Universal Nasional</span>
+      <span class="project-tech"> · Laravel, Next.js, MySQL, Node.js</span>
+      <div class="project-desc">Sistem manajemen layanan pos universal nasional yang dikerjakan untuk Komdigi. <a href="https://verifikasilpu.komdigi.go.id/auth" target="_blank">verifikasilpu.komdigi.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">AI Kyujin – Platform Pencari Kerja Berbasis AI</span>
+      <span class="project-tech"> · PHP, PostgreSQL, TensorFlow, JavaScript</span>
+      <div class="project-desc">Platform job-matching dan rekomendasi pekerjaan cerdas yang mengintegrasikan machine learning. <a href="https://dev.ai-kyujin.jp/login" target="_blank">ai-kyujin.jp</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Oganlopian – API Hub Terpusat Kab. Purwakarta</span>
+      <span class="project-tech"> · PHP, PostgreSQL, Vue.js, Livewire, Tailwind CSS</span>
+      <div class="project-desc">REST endpoint terversi (pariwisata, lowongan, transportasi, Prodeskel) dengan RBAC, verifikasi email, dan dasbor admin. <a href="https://oganlopian.purwakartakab.go.id" target="_blank">oganlopian.purwakartakab.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Kejari Purwakarta – Web &amp; Aplikasi Mobile Layanan Pemerintah</span>
+      <span class="project-tech"> · Laravel, MySQL, Flutter/Dart</span>
+      <div class="project-desc">Website layanan dan aplikasi Android Kejaksaan Negeri Purwakarta. <a href="https://kejari-purwakarta.kejaksaan.go.id" target="_blank">kejari-purwakarta.kejaksaan.go.id</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Templatenesia – Marketplace Digital</span>
+      <span class="project-tech"> · Laravel, Livewire, Tailwind CSS, MySQL, iPaymu</span>
+      <div class="project-desc">Marketplace template website, plugin, dan grafis dengan payment gateway terintegrasi. <a href="https://templatenesia.com" target="_blank">templatenesia.com</a></div>
+    </div>
+
+    <div class="project-entry">
+      <span class="project-title">Green Cure – Aplikasi Deteksi Penyakit Tanaman</span>
+      <span class="project-tech"> · Next.js, AdonisJS, Node.js, TensorFlow</span>
+      <div class="project-desc">Proyek kompetisi startup: aplikasi AI untuk mendeteksi penyakit tanaman melalui pemindaian gambar. Team leader &amp; full-stack developer. <a href="https://green-cure.netlify.app" target="_blank">green-cure.netlify.app</a></div>
+    </div>
+  </section>
+
+</div><!-- /.page -->
+</body>
+</html>
