@@ -1,10 +1,49 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import React from 'react';
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { getBlogContent, getBlogMetadata } from "@/lib/actions/blog.action";
+
+const HEADING_GRADIENT = "bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent";
+const EMOJI_RE = /((?:\p{Emoji_Presentation}|\p{Extended_Pictographic})+)/gu;
+
+function GradientText({ children }: { children: React.ReactNode }) {
+  if (typeof children === 'string') {
+    const parts = children.split(EMOJI_RE);
+    if (parts.length <= 1) return <span className={HEADING_GRADIENT}>{children}</span>;
+    return (
+      <>
+        {parts.map((part, i) =>
+          !part ? null : new RegExp(EMOJI_RE.source, 'u').test(part)
+            ? <span key={i}>{part}</span>
+            : <span key={i} className={HEADING_GRADIENT}>{part}</span>
+        )}
+      </>
+    );
+  }
+  if (Array.isArray(children)) {
+    return <>{(children as React.ReactNode[]).map((child, i) => <GradientText key={i}>{child}</GradientText>)}</>;
+  }
+  return <span className={HEADING_GRADIENT}>{children}</span>;
+}
+
+const markdownComponents = {
+  h1: ({ children }: { children?: React.ReactNode }) => (
+    <h1 className="text-4xl mb-6 mt-8 font-bold"><GradientText>{children}</GradientText></h1>
+  ),
+  h2: ({ children }: { children?: React.ReactNode }) => (
+    <h2 className="text-3xl mb-5 mt-8 pb-3 border-b border-indigo-300/50 dark:border-indigo-500/30 font-bold">
+      <GradientText>{children}</GradientText>
+    </h2>
+  ),
+  h3: ({ children }: { children?: React.ReactNode }) => (
+    <h3 className="text-2xl mb-4 mt-6 font-bold"><GradientText>{children}</GradientText></h3>
+  ),
+};
 
 export default function BlogPage({
   params,
@@ -83,14 +122,10 @@ export default function BlogPage({
         <article className="relative">
           <Markdown
             rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm]}
+            components={markdownComponents}
             className="blogContent prose prose-lg dark:prose-invert max-w-none
-              prose-headings:font-bold 
-              prose-headings:bg-gradient-to-r prose-headings:from-indigo-600 prose-headings:to-purple-600 
-              dark:prose-headings:from-indigo-400 dark:prose-headings:to-purple-400 
-              prose-headings:bg-clip-text prose-headings:text-transparent 
-              prose-h1:text-4xl prose-h1:mb-6 prose-h1:mt-8 
-              prose-h2:text-3xl prose-h2:mb-5 prose-h2:mt-8 prose-h2:pb-3 prose-h2:border-b prose-h2:border-indigo-300/50 dark:prose-h2:border-indigo-500/30 
-              prose-h3:text-2xl prose-h3:mb-4 prose-h3:mt-6 
+              prose-headings:font-bold
               prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed prose-p:mb-6 
               prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:no-underline prose-a:font-semibold 
               hover:prose-a:text-indigo-700 dark:hover:prose-a:text-indigo-300 hover:prose-a:underline 
