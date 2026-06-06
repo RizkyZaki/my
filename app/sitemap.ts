@@ -5,6 +5,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const AllBlogs = await getAllBlogsMetadata();
   const blogEntries: MetadataRoute.Sitemap = AllBlogs.map(({ slug }: any) => ({
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/blogs/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
   }));
 
   return [

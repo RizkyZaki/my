@@ -1,4 +1,12 @@
+import { Metadata } from "next";
 import Hero from "@/components/Hero";
+
+export const metadata: Metadata = {
+  title: "Zach | Personal Website",
+  description:
+    "Personal website of Rizky Zaki Zulkarnaen (Zach) — software engineer, blogger, and developer from Indonesia. Explore projects, articles, and more.",
+  alternates: { canonical: "https://www.zach.my" },
+};
 import Intro from "@/components/Intro";
 import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";

@@ -1,73 +1,110 @@
-'use client';
-
-import { useState, useEffect } from 'react';
 import React from 'react';
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
+import { Metadata } from "next";
 import { getBlogContent, getBlogMetadata } from "@/lib/actions/blog.action";
+import BackToTop from "./BackToTop";
 
-const HEADING_GRADIENT = "bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400 bg-clip-text text-transparent";
-const EMOJI_RE = /((?:\p{Emoji_Presentation}|\p{Extended_Pictographic})+)/gu;
+const BASE_URL = "https://www.zach.my";
+const DEFAULT_OG = "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png";
 
-function GradientText({ children }: { children: React.ReactNode }) {
-  if (typeof children === 'string') {
-    const parts = children.split(EMOJI_RE);
-    if (parts.length <= 1) return <span className={HEADING_GRADIENT}>{children}</span>;
-    return (
-      <>
-        {parts.map((part, i) =>
-          !part ? null : new RegExp(EMOJI_RE.source, 'u').test(part)
-            ? <span key={i}>{part}</span>
-            : <span key={i} className={HEADING_GRADIENT}>{part}</span>
-        )}
-      </>
-    );
-  }
-  if (Array.isArray(children)) {
-    return <>{(children as React.ReactNode[]).map((child, i) => <GradientText key={i}>{child}</GradientText>)}</>;
-  }
-  return <span className={HEADING_GRADIENT}>{children}</span>;
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const meta = await getBlogMetadata(params.slug);
+  const title = meta?.title ? `${meta.title} | Zach Blog` : "Blog | Zach";
+  const description =
+    meta?.description ||
+    "Artikel dan tulisan dari Zach — Rizky Zaki Zulkarnaen, software engineer Indonesia.";
+  const image = meta?.img || DEFAULT_OG;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: `${BASE_URL}/blogs/${params.slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      authors: ["Rizky Zaki Zulkarnaen"],
+      images: [{ url: image, width: 1200, height: 630 }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
+    },
+  };
+}
+
+function estimateReadTime(content: string): number {
+  const words = content.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / 200));
 }
 
 const markdownComponents = {
   h1: ({ children }: { children?: React.ReactNode }) => (
-    <h1 className="text-4xl mb-6 mt-8 font-bold"><GradientText>{children}</GradientText></h1>
+    <h1 className="text-4xl mb-6 mt-8 font-bold text-gray-900 dark:text-white">{children}</h1>
   ),
   h2: ({ children }: { children?: React.ReactNode }) => (
-    <h2 className="text-3xl mb-5 mt-8 pb-3 border-b border-indigo-300/50 dark:border-indigo-500/30 font-bold">
-      <GradientText>{children}</GradientText>
+    <h2 className="text-3xl mb-5 mt-8 pb-3 border-b border-indigo-300/50 dark:border-indigo-500/30 font-bold text-gray-900 dark:text-white">
+      {children}
     </h2>
   ),
   h3: ({ children }: { children?: React.ReactNode }) => (
-    <h3 className="text-2xl mb-4 mt-6 font-bold"><GradientText>{children}</GradientText></h3>
+    <h3 className="text-2xl mb-4 mt-6 font-bold text-gray-900 dark:text-white">{children}</h3>
   ),
 };
 
-export default function BlogPage({
+export default async function BlogPage({
   params,
 }: {
   params: { slug: string };
 }) {
-  const [blog, setBlog] = useState('');
-  const [metadata, setMetadata] = useState<any>(null);
+  const [blog, metadata] = await Promise.all([
+    getBlogContent(params.slug),
+    getBlogMetadata(params.slug),
+  ]);
 
-  useEffect(() => {
-    async function loadBlog() {
-      const content = await getBlogContent(params.slug);
-      const meta = await getBlogMetadata(params.slug);
-      setBlog(content);
-      setMetadata(meta);
-    }
-    loadBlog();
-  }, [params.slug]);
+  const readTime = estimateReadTime(blog);
+
+  const jsonLd = metadata
+    ? {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: metadata.title,
+        image: metadata.img,
+        author: {
+          "@type": "Person",
+          name: "Rizky Zaki Zulkarnaen",
+          url: BASE_URL,
+        },
+        publisher: {
+          "@type": "Person",
+          name: "Rizky Zaki Zulkarnaen",
+          url: BASE_URL,
+        },
+        datePublished: metadata.date,
+        url: `${BASE_URL}/blogs/${params.slug}`,
+      }
+    : null;
 
   return (
     <div className="min-h-screen bg-white dark:bg-black pt-28 pb-20">
+      {jsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      )}
       <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-12">
         <header className="mb-12">
-          <Link 
+          <Link
             href="/blogs"
             className="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300 mb-8 group transition-colors"
           >
@@ -102,20 +139,9 @@ export default function BlogPage({
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="font-semibold text-purple-700 dark:text-purple-300">
-                {Math.floor(Math.random() * 10 + 5)} min read
+                {readTime} min read
               </span>
             </div>
-
-            {metadata?.author && (
-              <div className="flex items-center gap-2 bg-gradient-to-r from-pink-100 to-orange-100 dark:from-pink-500/10 dark:to-orange-500/10 backdrop-blur-sm border border-pink-200 dark:border-pink-500/20 px-5 py-2.5 rounded-full">
-                <svg className="w-4 h-4 text-pink-600 dark:text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-                <span className="font-semibold text-pink-700 dark:text-pink-300">
-                  {metadata.author}
-                </span>
-              </div>
-            )}
           </div>
         </header>
 
@@ -126,38 +152,37 @@ export default function BlogPage({
             components={markdownComponents}
             className="blogContent prose prose-lg dark:prose-invert max-w-none
               prose-headings:font-bold
-              prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed prose-p:mb-6 
-              prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:no-underline prose-a:font-semibold 
-              hover:prose-a:text-indigo-700 dark:hover:prose-a:text-indigo-300 hover:prose-a:underline 
-              prose-a:transition-all prose-a:decoration-2 prose-a:underline-offset-4 
-              prose-strong:text-purple-700 dark:prose-strong:text-purple-300 prose-strong:font-bold 
-              prose-em:text-pink-700 dark:prose-em:text-pink-300 prose-em:italic 
-              prose-code:text-indigo-700 dark:prose-code:text-indigo-300 
-              prose-code:bg-indigo-100/80 dark:prose-code:bg-indigo-950/50 
-              prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-sm 
-              prose-code:border prose-code:border-indigo-200/50 dark:prose-code:border-indigo-800/50 
-              prose-pre:bg-gray-100 dark:prose-pre:bg-gray-950 
-              prose-pre:border-2 prose-pre:border-gray-300 dark:prose-pre:border-gray-800 
-              prose-pre:rounded-2xl prose-pre:shadow-xl prose-pre:p-6 
-              prose-blockquote:border-l-4 prose-blockquote:border-indigo-500 
-              prose-blockquote:bg-indigo-50/50 dark:prose-blockquote:bg-indigo-950/30 
-              prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:italic 
-              prose-blockquote:text-gray-800 dark:prose-blockquote:text-gray-200 
-              prose-blockquote:shadow-lg 
-              prose-ul:space-y-3 prose-ul:my-6 
-              prose-ol:space-y-3 prose-ol:my-6 
-              prose-li:text-gray-800 dark:prose-li:text-gray-200 prose-li:leading-relaxed 
-              prose-li::marker:text-indigo-600 dark:prose-li::marker:text-indigo-400 prose-li::marker:font-bold 
-              prose-img:rounded-2xl prose-img:shadow-2xl 
-              prose-img:border-2 prose-img:border-gray-300 dark:prose-img:border-gray-800 
-              prose-img:my-8 
-              prose-hr:border-gray-300 dark:prose-hr:border-gray-800 prose-hr:my-12 
-              prose-table:border-2 prose-table:border-gray-300 dark:prose-table:border-gray-800 
-              prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-xl 
-              prose-th:bg-gradient-to-r prose-th:from-indigo-100 prose-th:to-purple-100 
-              dark:prose-th:from-indigo-950/50 dark:prose-th:to-purple-950/50 
-              prose-th:text-indigo-700 dark:prose-th:text-indigo-300 prose-th:font-bold prose-th:p-4 
-              prose-td:border-gray-300 dark:prose-td:border-gray-800 prose-td:p-4 
+              prose-p:text-gray-800 dark:prose-p:text-gray-200 prose-p:leading-relaxed prose-p:mb-6
+              prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-a:no-underline prose-a:font-semibold
+              hover:prose-a:text-indigo-700 dark:hover:prose-a:text-indigo-300 hover:prose-a:underline
+              prose-a:transition-all prose-a:decoration-2 prose-a:underline-offset-4
+              prose-strong:text-purple-700 dark:prose-strong:text-purple-300 prose-strong:font-bold
+              prose-em:text-pink-700 dark:prose-em:text-pink-300 prose-em:italic
+              prose-code:text-indigo-700 dark:prose-code:text-indigo-300
+              prose-code:bg-indigo-100/80 dark:prose-code:bg-indigo-950/50
+              prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-sm
+              prose-code:border prose-code:border-indigo-200/50 dark:prose-code:border-indigo-800/50
+              prose-pre:bg-gray-100 dark:prose-pre:bg-gray-950
+              prose-pre:border-2 prose-pre:border-gray-300 dark:prose-pre:border-gray-800
+              prose-pre:rounded-2xl prose-pre:shadow-xl prose-pre:p-6
+              prose-blockquote:border-l-4 prose-blockquote:border-indigo-500
+              prose-blockquote:bg-indigo-50/50 dark:prose-blockquote:bg-indigo-950/30
+              prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:italic
+              prose-blockquote:text-gray-800 dark:prose-blockquote:text-gray-200
+              prose-blockquote:shadow-lg
+              prose-ul:space-y-3 prose-ul:my-6
+              prose-ol:space-y-3 prose-ol:my-6
+              prose-li:text-gray-800 dark:prose-li:text-gray-200 prose-li:leading-relaxed
+              prose-img:rounded-2xl prose-img:shadow-2xl
+              prose-img:border-2 prose-img:border-gray-300 dark:prose-img:border-gray-800
+              prose-img:my-8
+              prose-hr:border-gray-300 dark:prose-hr:border-gray-800 prose-hr:my-12
+              prose-table:border-2 prose-table:border-gray-300 dark:prose-table:border-gray-800
+              prose-table:rounded-xl prose-table:overflow-hidden prose-table:shadow-xl
+              prose-th:bg-gradient-to-r prose-th:from-indigo-100 prose-th:to-purple-100
+              dark:prose-th:from-indigo-950/50 dark:prose-th:to-purple-950/50
+              prose-th:text-indigo-700 dark:prose-th:text-indigo-300 prose-th:font-bold prose-th:p-4
+              prose-td:border-gray-300 dark:prose-td:border-gray-800 prose-td:p-4
               prose-td:text-gray-800 dark:prose-td:text-gray-200"
           >
             {blog}
@@ -186,16 +211,7 @@ export default function BlogPage({
                 </button>
               </div>
             </div>
-
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="group flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-full text-white font-semibold transition-all hover:scale-105 shadow-lg"
-            >
-              <span>Back to Top</span>
-              <svg className="w-5 h-5 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
-              </svg>
-            </button>
+            <BackToTop />
           </div>
         </footer>
       </div>
