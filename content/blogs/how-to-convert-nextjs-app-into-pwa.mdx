@@ -1,0 +1,174 @@
+# How to convert Next JS App into a Progressive Web App
+
+<div align="center">
+    <a href="https://www.zach-me.vercel.app" target="_blank">
+      <img src="https://miro.medium.com/v2/resize:fit:1000/0*TMmvFXObXEKuOBBF.jpg" alt="next pwa"/>
+    </a>
+
+</div>
+
+<br />
+
+## 📋 <a name="table">Table of Contents</a>
+
+1. 🤠 [What is PWA](#what_is_pwa)
+2. 🎭 [Pros & Cons of PWA](#pros_and_cons)
+3. 🧭 [Implement PWA in Next JS](#nextjs_pwa)
+
+<br />
+
+## 🤠 <a name="what_is_pwa">What is PWA ?</a>
+
+**Progressive Web Apps (PWA)** are websites that can be installed as apps on your device, can be made to work offline like native android or iOS apps.
+But that is not all about PWAs. I was surprised when I came to know about PWA. Just bear with me in the article, and within few minutes, you will be filled with surprises. So, lets understand about PWA in detail.
+
+Do you know what it takes for an android developer to create an app and host it on play store? Not only $25 to get their apps published on play store, but also a lot of skills to create those native applications. Even after that, their applications will only work on android devices, NOT on iOS.
+Nevertheless, if the same developer managed to create an equivalent iOS app, apple store charges them $99 per year to publish their apps; and that is quite surprising, isn't it?
+Not only that, app developers heavily rely on services like firebase for backend as a service or they need a web developer to create backend APIs for them.
+
+But, web developers are the one who plays with both backend and frontend, not only for smaller screens but for various screen sizes.
+What if we, as web developers, have the power to create apps or just **Convert our Websites into Native Apps** ? Yeah, here comes PWA into picture.
+
+## 🎭 <a name="pros_and_cons">Pros & Cons of PWA</a>
+
+<br />
+🙂 <strong>Pros</strong>
+<br />
+<br />
+👉 <strong>Cost Effective</strong>: As a developer, we can create websites and
+convert it into a PWA to get both app and website for our product.
+
+👉 <strong>Easy Installation</strong>: PWAs can be easily installed from websites, they can also be published on play store and are of negligible size (in KBs).
+
+👉 <strong>Native app like experience</strong>: Although they are not native apps, but they are buttery smooth and can access various features or device hardwares like native apps, such as push notifications, geolocation, file system, etc.
+
+👉 <strong>Cross Platform compatibility</strong>: PWAs can not only be installed on android but also on iOS devices. Not only that, same PWA can work as desktop apps and can also be installed on your PC. Doesn't that sound great? Create a website and you will create an android app, an iOS app as well as a desktop app at the same time.
+
+👉 <strong>Offline functionality</strong>: Besides being fast, they can also be made to work offline, like native apps.
+
+And their are lot of other pros of using PWA, that I can't even list them all in the article.
+
+<br />
+🙁 <strong>Cons</strong>
+<br />
+<br />
+👉 <strong>Liimited functionality</strong>: Compared to native apps, PWAs may
+not fully access some device features like geofencing, or advanced sensors,
+limiting their capabilities. Although, they can access various sensors.
+
+👉 <strong>performance</strong>: Although PWAs can be fast, they might not match the performance of fully optimized native apps, especially for graphics-intensive or complex applications.
+
+<br />
+<br />
+
+## 🧭 <a name="nextjs_pwa">Implement PWA in Next JS App</a>
+
+<br />
+Converting a simple HTML CSS JS website or react website to PWA can be slightly difficult,
+but when it comes to Next JS, you will already have a PWA qualified website when
+you will complete creating your website. Its just that some configurations need to
+be made to actually get an app like experience, that are discussed below:
+
+**npm package**
+
+Install an npm package by executing the following command on your terminal:
+
+```bash
+npm install @ducanh2912/next-pwa
+```
+
+**public/manifest.json**
+
+Create a file manifest.json in public folder of your Next JS app and embed the following code:
+
+```json
+{
+  "name": "<WEBSITE NAME>",
+  "short_name": "<SHORT NAME>",
+  "icons": [
+    {
+      "src": "<img192.png PATH>",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "<img384.png PATH>",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "<img512.png PATH>",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#6C3FEA",
+  "background_color": "#000000",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait"
+}
+```
+
+Remember to modify name and short_name and create 3 images for your website of sizes as specified in the code above. For this, you can use any only image resizer website.
+
+**Modify next.config.js**
+
+Wrap your next.config.js with withPWA that comes from npm package @ducanh2912/next-pwa:
+
+```javascript
+const withPWA = require("@ducanh2912/next-pwa").default({
+  dest: "public",
+  cacheOnFrontendNav: true,
+  aggressiveFrontEndNavCaching: true,
+  workboxOptions: {
+    disabledDevLogs: true,
+  },
+});
+
+const nextConfig = {
+  pageExtensions: ["js", "jsx", "mdx", "ts", "tsx"],
+  images: {},
+};
+
+module.exports = withPWA(nextConfig); // wrap nextConfig with withPWA
+```
+
+**Modify RootLayout**
+
+Insert following line in metadata of RootLayout:
+
+```javascript
+export const metadata: Metadata = {
+manifest: "/manifest.json",  // Insert this line
+...
+}
+```
+
+Then, insert the following code below metadata but above RootLayout.
+
+```javascript
+import type { Viewport } from "next"; // import at the top of file
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
+};
+```
+
+That's it.
+Now as we run the code with <strong>npm run dev</strong>, some files are automatically created in public folder such as
+
+```
+sw.js
+sw.js.map
+workbox-<random-characters>.js.map
+```
+
+These are service worker files where we can write PWA codes if we want to add some PWA specific functionality in our app.
+But for now, We have our PWA app ready. How can you verify?
+
+On PC, you will see an install icon in the search bar of your browser, when you open localhost:3000.
+Once deployed, you can install it to your phone by pressing 'Add to home screen' that is usually seen when you click the three dots on top right (on chrome browser).
+
+<br />

@@ -1,0 +1,56 @@
+[
+  {
+    "slug": "vibe-coding-vs-ai-coding",
+    "title": "Vibe Coding vs Coding Pakai AI: Jangan Sampai Salah Kaprah!",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/vibe-vs-ai-coding.png",
+    "date": "June, 2026"
+  },
+  {
+    "slug": "rest-api-vs-graphql",
+    "title": "REST API vs GraphQL: Mana yang Lebih Cocok untuk Project Modern?",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/rvg.png",
+    "date": "January, 2026"
+  },
+  {
+    "slug": "cicd-pipeline-deploy-tanpa-deg-degan",
+    "title": "CI/CD Pipeline: Cara Biar Deploy Nggak Deg-deg-an",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/cicd.png",
+    "date": "January, 2026"
+  },
+  {
+    "slug": "how-ai-works",
+    "title": "Cara Kerja AI: Dari Nol Hingga Pintar",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/how-ai-works.png",
+    "date": "May, 2025"
+  },
+  {
+    "slug": "docker-babies",
+    "title": "Docker Buat yang Baru Lahir di Dunia Dev",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/docker-babies.png",
+    "date": "May, 2025"
+  },
+  {
+    "slug": "custom-hook-react",
+    "title": "Step-by-Step Guide Creating a Custom Hook in React",
+    "img": "https://semicolon.dev/static/complete-react-js-hooks-tutorial-for-beginners-usestate-useeffect-with-examples.png",
+    "date": "November, 2024"
+  },
+  {
+    "slug": "how-to-convert-nextjs-app-into-pwa",
+    "title": "How to convert your Next JS App into a Progressive Web App",
+    "img": "https://miro.medium.com/v2/resize:fit:1000/0*TMmvFXObXEKuOBBF.jpg",
+    "date": "July, 2024"
+  },
+  {
+    "slug": "guide-to-set-up-php-my-admin-in-laragon",
+    "title": "Ultimate & Simple guide to set up phpMyAdmin in Laragon Server",
+    "img": "https://jdmdigital-204e1.kxcdn.com/wp-content/uploads/phpMyAdmin-featured-image.png",
+    "date": "July, 2024"
+  },
+  {
+    "slug": "footer",
+    "title": "Welcome To My personal Page / Zach Personal Page, You At Blogs",
+    "img": "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png",
+    "date": "Welcome"
+  }
+]

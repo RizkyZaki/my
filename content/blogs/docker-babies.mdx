@@ -1,0 +1,149 @@
+# Docker Itu Apa? Bayi Aja Ngerti! 🐣🐳
+
+![Docker Thumbnail](https://raw.githubusercontent.com/RizkyZaki/Blog-Collections/refs/heads/main/resource/docker-babies.png)
+
+Halo teman-teman developer kece! Kali ini aku mau bahas Docker, tapi pake **bahasa bayi**, jadi jangan takut kalau kamu masih newbie. Yuk kita mulai petualangan dunia kontainer!
+
+## 📚 Daftar Isi
+
+- [🧁 Apa Itu Docker Image?](#-apa-itu-docker-image)
+- [🚀 Apa Itu Docker Container?](#-apa-itu-docker-container)
+- [🧑‍🍳 Apa Itu Docker Compose?](#-apa-itu-docker-compose)
+- [📦 Apa Itu Docker Volume?](#-apa-itu-docker-volume)
+- [🧠 Kesimpulan](#-kesimpulan)
+- [✨ Siap Mainan Docker?](#-siap-mainan-docker)
+- [🙌 Terima Kasih!](#-terima-kasih)
+
+---
+
+## 🧁 Apa Itu Docker Image?
+
+> **Image itu kayak cetakan kue.**
+
+Bayangin kamu punya cetakan kue bentuk bintang ⭐. Cetakan ini nggak bisa dimakan, tapi bisa dipakai buat bikin kue yang bentuknya sama.
+
+Nah di Docker, **image** itu file template yang isinya:
+- Sistem operasi mini (base image)
+- Aplikasi (kayak NGINX, Node.js, MySQL, dll)
+- Semua hal yang dibutuhin buat ngejalanin aplikasi itu.
+
+### Contoh:
+```bash
+docker pull nginx
+```
+Kamu kayak lagi ngambil cetakan kue dari toko online (Docker Hub).
+
+---
+
+## 🚀 Apa Itu Docker Container?
+
+> **Container itu kuenya yang udah jadi. Bisa dimakan!**
+
+Setelah kamu punya cetakan (image), kamu tuang adonan (kode dan config), terus panggang... Taraaa~ jadi kuenya! Itulah **container**.
+
+Container adalah **image yang sedang dijalankan**.
+
+### Contoh:
+```bash
+docker run nginx
+```
+Kamu lagi ngidupin server dari cetakan `nginx`. Bisa dikontrol, dimakan (eh), dimatiin, atau dibuang.
+
+---
+
+## 🧑‍🍳 Apa Itu Docker Compose?
+
+> **Docker Compose itu koki yang masak banyak menu sekaligus.**
+
+Bayangin kamu mau masak:
+- Nasi 🍚
+- Ayam goreng 🍗
+- Sayur 🥦
+- Sambal 🌶️
+
+Kalau masak satu-satu, capek banget! Tapi kalau kamu punya **koki** yang bisa baca **daftar resep**, cukup kasih 1 kertas aja (`docker-compose.yml`) dan dia langsung masak semua.
+
+### Contoh `docker-compose.yml`:
+
+```yaml
+version: "3.9"
+services:
+  web:
+    image: nginx
+  db:
+    image: mysql
+  cache:
+    image: redis
+```
+
+Terus kamu jalankan:
+
+```bash
+docker compose up
+```
+
+Boom! Semua langsung hidup bareng kayak rumah tangga harmonis.
+
+---
+
+## 📦 Apa Itu Docker Volume?
+
+> **Volume itu kayak laci khusus buat nyimpen barang, biar gak ilang pas mainan dibongkar pasang.**
+
+Bayangin kamu punya mainan yang suka kamu bongkar-pasang (kayak Lego). Nah, kamu pasti punya **laci** tempat nyimpen **barang penting** kayak stiker, baterai, atau koleksi mini-figurenya.
+
+Kalau mainannya rusak atau kamu ganti baru, isi lacinya **tetap aman**.
+
+### 🚢 Hubungannya dengan Docker:
+
+Di Docker:
+- Container itu kayak mainan: **bisa dihancurkan, dibikin ulang.**
+- Tapi... **data penting** (misalnya database, file upload, config user) **harus disimpan** di tempat khusus biar gak hilang saat container mati.
+
+Nah, **Docker Volume** adalah **tempat penyimpanan data permanen** di luar container.
+
+### 🔧 Contoh:
+```bash
+docker run -v mydata:/app/data myimage
+```
+Artinya:
+- Kamu bikin volume bernama `mydata`.
+- Semua data di dalam folder `/app/data` akan disimpan ke `mydata` dan **tetap ada** walau containernya dihentikan atau dihapus.
+
+### 🤓 Kenapa Volume Penting?
+
+- 📁 **Data persist** (tidak hilang saat container mati)
+- 💨 **Lebih cepat** dan aman dibanding mount manual dari host
+- 🔄 **Bisa dipakai banyak container** bareng-bareng (misal: container frontend & backend sharing folder)
+
+---
+
+## 🧠 Kesimpulan
+
+**Image**  
+_Cetakan kue ⭐_ — Template aplikasi  
+
+**Container**  
+_Kue yang jadi 🧁_ — Image yang sedang hidup  
+
+**Docker Hub**  
+_Toko online kue 🛒_ — Tempat download image  
+
+**Compose**  
+_Koki masak banyak 🍳_ — Jalanin banyak container sekaligus  
+
+**Volume**  
+_Laci penyimpanan 🗄️_ — Simpan data biar gak hilang  
+
+
+## ✨ Siap Mainan Docker?
+
+Coba deh install Docker, terus mulai dari:
+```bash
+docker run hello-world
+```
+Kalau keluar tulisan "Hello from Docker!", artinya kamu udah siap menjelajahi dunia kontainer kayak DevOps sejati!
+
+---
+
+## 🙌 Terima Kasih!

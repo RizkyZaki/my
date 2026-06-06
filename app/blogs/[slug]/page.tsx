@@ -4,11 +4,16 @@ import rehypeRaw from "rehype-raw";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { Metadata } from "next";
-import { getBlogContent, getBlogMetadata } from "@/lib/actions/blog.action";
+import { getBlogContent, getBlogMetadata, getAllBlogsMetadata } from "@/lib/actions/blog.action";
 import BackToTop from "./BackToTop";
 
 const BASE_URL = "https://www.zach.my";
 const DEFAULT_OG = "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png";
+
+export async function generateStaticParams() {
+  const metadata = await getAllBlogsMetadata();
+  return metadata.map(({ slug }: { slug: string }) => ({ slug }));
+}
 
 export async function generateMetadata({
   params,

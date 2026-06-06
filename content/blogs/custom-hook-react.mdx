@@ -1,0 +1,130 @@
+# Step-by-Step Guide: Creating a Custom Hook in React
+
+![React Custom Hooks](https://semicolon.dev/static/complete-react-js-hooks-tutorial-for-beginners-usestate-useeffect-with-examples.png)
+
+## Table of Contents
+
+1. 🧑‍💻 [What Are Custom Hooks?](#what-are-custom-hooks)
+2. 🔍 [Example: The `useFetch` Hook](#example-the-usefetch-hook)
+3. ⚡ [Step 1: Set Up a React Project](#step-1-set-up-a-react-project)
+4. 🛠️ [Step 2: Add the Custom Hook](#step-2-add-the-custom-hook)
+5. 🖥️ [Step 3: Use the Hook in a Component](#step-3-use-the-hook-in-a-component)
+6. 🚀 [Step 4: Run the Application](#step-4-run-the-application)
+
+---
+
+## What Are Custom Hooks? 🧑‍💻
+
+Custom Hooks are JavaScript functions in React that start with `use`. They allow you to encapsulate logic or functionality for reuse across multiple components, reducing code duplication and improving maintainability.
+
+In this tutorial, we’ll create a custom hook called `useFetch` that simplifies dynamic API data fetching.
+
+---
+
+## Example: The `useFetch` Hook 🔍
+
+The `useFetch` hook is designed to:
+
+1. Fetch data from a given API URL.
+2. Handle loading states.
+3. Handle errors during the request.
+
+---
+
+## Step 1: Set Up a React Project ⚡
+
+If you don’t already have a React project, create one by running the following commands:
+
+```bash
+npx create-react-app my-app
+cd my-app
+```
+
+This will set up a new React project in the `my-app` folder.
+
+---
+
+## Step 2: Add the Custom Hook 🛠️
+
+1. Inside the `src` directory of your project, create a folder named `hooks`:
+   ```
+   src/hooks/
+   ```
+2. Inside the `hooks` folder, create a file named `useFetch.js` and add the following code:
+
+```jsx
+import { useState, useEffect } from "react";
+
+export const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error("Failed to fetch data");
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
+```
+
+---
+
+## Step 3: Use the Hook in a Component 🖥️
+
+1. Create a new component, `DataDisplay.js`, in the `src` directory.
+2. Add the following code to `DataDisplay.js`:
+
+```jsx
+import React from "react";
+import { useFetch } from "./hooks/useFetch";
+
+const DataDisplay = () => {
+  const { data, loading, error } = useFetch(
+    "https://jsonplaceholder.typicode.com/posts"
+  );
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div>
+      <h1>Posts:</h1>
+      <ul>
+        {data.map((post) => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default DataDisplay;
+```
+
+---
+
+## Step 4: Run the Application 🚀
+
+1. Start the development server:
+   ```bash
+   npm start
+   ```
+2. Open your browser and navigate to `http://localhost:3000`. The `DataDisplay` component should display a list of posts fetched from the API.
+
+---
+
+With these steps, you've successfully created and used a reusable custom hook in React! 🎉
