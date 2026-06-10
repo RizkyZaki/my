@@ -14,7 +14,7 @@ const work_sans = Work_Sans({
 });
 
 const OG_IMAGE = "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png";
-const BASE_URL = "https://www.zach.my";
+const BASE_URL = "https://zxch.my.id";
 const SITE_TITLE = "Zach | Personal Website";
 const SITE_DESC =
   "Personal website of Rizky Zaki Zulkarnaen (Zach) — software engineer, blogger, and developer from Indonesia. Explore projects, articles, and more.";

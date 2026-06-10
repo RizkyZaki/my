@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Zach | Personal Website",
   description:
     "Personal website of Rizky Zaki Zulkarnaen (Zach) — software engineer, blogger, and developer from Indonesia. Explore projects, articles, and more.",
-  alternates: { canonical: "https://www.zach.my" },
+  alternates: { canonical: "https://zxch.my.id" },
 };
 import Intro from "@/components/Intro";
 import Skills from "@/components/Skills";

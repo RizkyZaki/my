@@ -7,7 +7,7 @@ import { Metadata } from "next";
 import { getBlogContent, getBlogMetadata, getAllBlogsMetadata } from "@/lib/actions/blog.action";
 import BackToTop from "./BackToTop";
 
-const BASE_URL = "https://www.zach.my";
+const BASE_URL = "https://zxch.my.id";
 const DEFAULT_OG = "https://raw.githubusercontent.com/RizkyZaki/my/main/app/opengraph-image.png";
 
 export async function generateStaticParams() {
