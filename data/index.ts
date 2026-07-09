@@ -326,11 +326,11 @@ export const projects = [
   },
   {
     id: 32,
-    title: "Oganlopian Super Apps",
-    des: "Purwakarta’s all-in-one Android super app—a single mobile platform integrating public services such as tourism, jobs, public information, transport, and Prodeskel, backed by versioned REST APIs, RBAC, and email verification.",
-    img: "/images/project/ogan.jpg",
-    iconLists: ["/flutter.svg", "/dart.svg", "/php.svg", "/postgre.svg"],
-    link: "https://play.google.com/store/apps/details?id=go.id.oganlopian.purwakartakab",
+    title: "Oganlopian Website",
+    des: "Purwakarta’s central API hub—versioned REST endpoints (tourism, jobs, public info, transport, Prodeskel) with RBAC, dev-only docs, email verification, and an admin dashboard.",
+    img: "/images/project/ogan.png",
+    iconLists: ["/php.svg", "postgre.svg", "vuejs.svg", "shadcn-ui.svg","livewire.svg", "tailwind.svg"],
+    link: "https://oganlopian.purwakartakab.go.id",
   },
   {
     id: 33,
@@ -355,6 +355,14 @@ export const projects = [
     img: "/images/project/sinar.jpg",
     iconLists: ["/laravel.svg", "/javascript.svg", "/postgre.svg", "/tailwind.svg"],
     link: "https://sinardev.com",
+  },
+  {
+    id: 36,
+    title: "Oganlopian Super Apps",
+    des: "Purwakarta’s all-in-one Android super app for citizens—a single mobile platform integrating public services such as tourism, jobs, public information, transport, and Prodeskel, powered by the Oganlopian central API.",
+    img: "/images/project/ogan.jpg",
+    iconLists: ["/flutter.svg", "/dart.svg", "/php.svg", "/postgre.svg"],
+    link: "https://play.google.com/store/apps/details?id=go.id.oganlopian.purwakartakab",
   },
 ];
 
