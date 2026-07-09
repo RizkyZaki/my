@@ -326,11 +326,11 @@ export const projects = [
   },
   {
     id: 32,
-    title: "Oganlopian Website",
-    des: "Purwakarta’s central API hub—versioned REST endpoints (tourism, jobs, public info, transport, Prodeskel) with RBAC, dev-only docs, email verification, and an admin dashboard.",
-    img: "/images/project/ogan.png",
-    iconLists: ["/php.svg", "postgre.svg", "vuejs.svg", "shadcn-ui.svg","livewire.svg", "tailwind.svg"],
-    link: "https://oganlopian.purwakartakab.go.id",
+    title: "Oganlopian Super Apps",
+    des: "Purwakarta’s all-in-one Android super app—a single mobile platform integrating public services such as tourism, jobs, public information, transport, and Prodeskel, backed by versioned REST APIs, RBAC, and email verification.",
+    img: "/images/project/ogan.jpg",
+    iconLists: ["/flutter.svg", "/dart.svg", "/php.svg", "/postgre.svg"],
+    link: "https://play.google.com/store/apps/details?id=go.id.oganlopian.purwakartakab",
   },
   {
     id: 33,
@@ -347,6 +347,14 @@ export const projects = [
     img: "/images/project/kodepos.png",
     iconLists: ["/shadcn-ui.svg", "/livewire.svg", "/php.svg", "/javascript.svg", "/postgre.svg"],
     link: "https://www.poskodeid.com/",
+  },
+  {
+    id: 35,
+    title: "SINAR (Sistem Informasi Rupa Bumi)",
+    des: "A geospatial information system for recording and managing topographic features (rupa bumi). It catalogs and documents existing landforms and geographic elements with structured data, mapping, and search capabilities.",
+    img: "/images/project/sinar.jpg",
+    iconLists: ["/laravel.svg", "/javascript.svg", "/postgre.svg", "/tailwind.svg"],
+    link: "https://sinardev.com",
   },
 ];
 
