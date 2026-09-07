@@ -9,6 +9,7 @@ import { MagicButton } from "./aceternity/StyledButton";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ShareButton from "./ShareButton";
+import { projects } from "@/data";
 
 const Hero = () => {
   const imgRef = useRef(null);
@@ -48,8 +49,8 @@ const Hero = () => {
 
       <div className="flex flex-col justify-center relative mb-14 z-20">
         <div className="flex flex-col items-center justify-center">
-          <div className="relative max-md:mt-14" ref={imgRef}>
-            <h1 className="max-w-[89vw] md:max-w-2xl lg:max-w-[80vw] text-[6rem] xs:text-[7rem] sm:text-[9rem] md:text-[12rem] lg:text-[15rem] font-semibold bg-gradient-to-r from-blue-700 to-blue-500 dark:from-blue-400 dark:to-blue-200 bg-clip-text text-transparent select-none">
+          <div className="relative max-md:mt-10 mt-6" ref={imgRef}>
+            <h1 className="max-w-[89vw] md:max-w-2xl lg:max-w-[80vw] text-[6rem] xs:text-[7rem] sm:text-[9rem] md:text-[12rem] lg:text-[15rem] leading-none font-semibold tracking-tighter bg-gradient-to-br from-indigo-600 via-violet-600 to-indigo-500 dark:from-indigo-300 dark:via-violet-300 dark:to-indigo-200 bg-clip-text text-transparent select-none">
               Sir Zach
             </h1>
             <Image
@@ -68,20 +69,50 @@ const Hero = () => {
             />
           </div>
 
-          <h2 className="uppercase tracking-widest max-sm:text-xs text-lg text-center text-black-100 dark:text-blue-100 max-md:mt-8">
-            Hola My name Rizky Zaki Zulkarnaen Welcome To My Personal Website.
+          <h2 className="max-w-2xl text-center text-base sm:text-xl muted-copy max-md:mt-8 mt-4">
+            I&apos;m <span className="font-semibold text-gray-900 dark:text-white">Rizky Zaki Zulkarnaen</span> — a
+            software engineer from Indonesia building government platforms,
+            super apps, and everything in between.
           </h2>
 
-          <Link
-            href="/resume/"
-            className="max-md:mt-10 max-sm:w-full max-xs:px-5"
-          >
-            <MagicButton
-              title="Resume"
-              position="right"
-              icon={<FaLocationArrow />}
-            />
-          </Link>
+          <div className="flex flex-wrap items-center justify-center gap-4 max-md:mt-10 mt-8 max-sm:w-full">
+            <Link href="/resume/" className="max-sm:w-full">
+              <MagicButton
+                title="Resume"
+                position="right"
+                icon={<FaLocationArrow />}
+              />
+            </Link>
+
+            <Link
+              href="/projects"
+              className="inline-flex h-12 w-full sm:w-60 items-center justify-center gap-2 rounded-lg border border-gray-300 dark:border-gray-700 px-7 text-sm font-medium text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-300"
+            >
+              See the work
+            </Link>
+          </div>
+
+          {/* Quick facts */}
+          <dl className="grid grid-cols-3 gap-px mt-12 w-full max-w-lg overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-800 bg-gray-200 dark:bg-gray-800">
+            {[
+              { value: `${projects.length}`, label: "Projects shipped" },
+              { value: "2021", label: "Coding since" },
+              { value: "Bandung", label: "Based in" },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="bg-white dark:bg-black px-3 py-4 text-center"
+              >
+                <dt className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+                  {stat.value}
+                </dt>
+                <dd className="text-[11px] sm:text-xs muted-copy mt-1">
+                  {stat.label}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
           <ShareButton className="sm:hidden mt-10" />
         </div>
         <Divider className="mt-10" />

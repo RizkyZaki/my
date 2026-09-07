@@ -15,9 +15,12 @@ import Quote from "@/components/Quote";
 export default function Home() {
   return (
     <main className="relative bg-white dark:bg-black flex justify-center items-center flex-col overflow-hidden">
-      <div className="fixed top-[50%] -left-[95px] max-sm:hidden z-50 -rotate-90 bg-blue-400 dark:text-black p-2">
+      <a
+        href="mailto:rizkyzaki682@gmail.com"
+        className="fixed top-[50%] -left-[95px] max-sm:hidden z-50 -rotate-90 rounded-b-lg bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium tracking-wide px-4 py-2 transition-colors"
+      >
         rizkyzaki682@gmail.com
-      </div>
+      </a>
 
       <div>
         <Hero />

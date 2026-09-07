@@ -1,4 +1,4 @@
-import { Home, Laptop2, Mail, NotebookText, User, Wrench } from "lucide-react";
+﻿import { Home, Laptop2, Mail, NotebookText, User, Wrench } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6";
 
 export const navItems = [
@@ -281,7 +281,7 @@ export const projects = [
     title: "Green Cure",
     des: "As the team leader and full-stack developer for the startup project 'Greencure,' I led the development of an innovative application designed to detect plant diseases through scanning technology. This project was initiated for a competition, focusing on agricultural sustainability and crop management.",
     img: "/images/project/greencure.PNG",
-    iconLists: ["/nextjs.svg", "/nodejs.svg", "/tailwind.svg", "adonisjs.svg"],
+    iconLists: ["/nextjs.svg", "/nodejs.svg", "/tailwind.svg", "/adonisjs.svg"],
     link: "https://green-cure.netlify.app",
   },
   {
@@ -305,7 +305,7 @@ export const projects = [
   title: "SIMLPU",
   des: "A national management system for Universal Postal Services across Indonesia.",
   img: "/images/project/lpu.png",
-  iconLists: ["/laravel.svg", "/nodejs.svg", "/nextjs.svg", "/tailwind.svg", "mysql.svg"],
+  iconLists: ["/laravel.svg", "/nodejs.svg", "/nextjs.svg", "/tailwind.svg", "/mysql.svg"],
   link: "https://verifikasilpu.komdigi.go.id/auth",
   },
   {
@@ -313,7 +313,7 @@ export const projects = [
     title: "E-Sakip Kab Purwakarta",
     des: "A performance accountability system for government institutions in Purwakarta Regency.",
     img: "/images/project/esakip.png",
-    iconLists: ["/laravel.svg", "mysql.svg"],
+    iconLists: ["/laravel.svg", "/mysql.svg"],
     link: "https://esakip.purwakartakab.go.id",
   },
   {
@@ -321,15 +321,22 @@ export const projects = [
     title: "AI Kyujin",
     des: "An AI-powered job seeker platform with intelligent job matching and recommendations.",
     img: "/images/project/aikyujin.png",
-    iconLists: ["/php.svg", "postgre.svg", "javascript.svg", "tensorflow.svg"],
+    iconLists: ["/php.svg", "/postgre.svg", "/javascript.svg", "/tensorflow.svg"],
     link: "https://dev.ai-kyujin.jp/login",
   },
   {
     id: 32,
     title: "Oganlopian Website",
-    des: "Purwakarta’s central API hub—versioned REST endpoints (tourism, jobs, public info, transport, Prodeskel) with RBAC, dev-only docs, email verification, and an admin dashboard.",
+    des: "Purwakartaâ€™s central API hubâ€”versioned REST endpoints (tourism, jobs, public info, transport, Prodeskel) with RBAC, dev-only docs, email verification, and an admin dashboard.",
     img: "/images/project/ogan.png",
-    iconLists: ["/php.svg", "postgre.svg", "vuejs.svg", "shadcn-ui.svg","livewire.svg", "tailwind.svg"],
+    iconLists: [
+      "/php.svg",
+      "/postgre.svg",
+      "/vue.svg",
+      "/shadcn-ui.svg",
+      "/livewire.svg",
+      "/tailwind.svg",
+    ],
     link: "https://oganlopian.purwakartakab.go.id",
   },
   {
@@ -359,10 +366,34 @@ export const projects = [
   {
     id: 36,
     title: "Oganlopian Super Apps",
-    des: "Purwakarta’s all-in-one Android super app for citizens—a single mobile platform integrating public services such as tourism, jobs, public information, transport, and Prodeskel, powered by the Oganlopian central API.",
+    des: "Purwakartaâ€™s all-in-one Android super app for citizensâ€”a single mobile platform integrating public services such as tourism, jobs, public information, transport, and Prodeskel, powered by the Oganlopian central API.",
     img: "/images/project/ogan.jpg",
     iconLists: ["/flutter.svg", "/dart.svg", "/php.svg", "/postgre.svg"],
     link: "https://play.google.com/store/apps/details?id=go.id.oganlopian.purwakartakab",
+  },
+  {
+    id: 37,
+    title: "Ogan Lopian Web Portal",
+    des: "The public-facing web portal of Ogan Lopian, the official digital gateway of Purwakarta Regency. Built with Astro for near-instant page loads, it brings tourism, open trips, culinary, local films, events, sports, hotels, UMKM, job vacancies, health facilities, public complaints, and official government services together in a single entry pointâ€”served by the Ogan Lopian central API and funneling visitors straight to the Android super app.",
+    img: "/images/project/oganweb.jpg",
+    iconLists: ["/astro.svg"],
+    link: "https://oganlopian.pratamatechsolution.co.id",
+  },
+  {
+    id: 38,
+    title: "EFORT Digital Multisolution",
+    des: "Company profile for EFORT, a geospatial and digital solutions firm serving 50+ government agencies, SOEs, and industry partners since 2005. Built with Next.js as a bilingual (ID/EN) marketing site covering surveying, mapping, geospatial analytics, and digital services, with a services taxonomy, portfolio showcase, and direct consultation funnel.",
+    img: "/images/project/efort.jpg",
+    iconLists: ["/nextjs.svg", "/tailwind.svg", "/typescript.svg"],
+    link: "https://efortconsultant.com",
+  },
+  {
+    id: 39,
+    title: "SINAR Mobile",
+    des: "The Flutter field companion to SINAR (Sistem Informasi Rupa Bumi). Surveyors record toponyms straight from the field with GPS tracking and live accuracy metrics, work offline against a local store, then reconcile with the server through a sync history—covering mapping, track logging, and the submission-to-approval workflow for geographic names.",
+    img: "/images/project/sinarmobile.jpeg",
+    iconLists: ["/flutter.svg", "/dart.svg", "/laravel.svg", "/postgre.svg"],
+    link: "",
   },
 ];
 

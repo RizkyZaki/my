@@ -65,33 +65,37 @@
     --ring: 240 4.9% 83.9%;
   }
 
-  /* width */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(240 5% 78%) transparent;
+  }
+
+  html.dark {
+    scrollbar-color: hsl(240 4% 30%) transparent;
+  }
+
   ::-webkit-scrollbar {
-    width: 13px;
+    width: 10px;
+    height: 10px;
   }
 
-  /* Track */
   ::-webkit-scrollbar-track {
-    background: linear-gradient(
-      180deg,
-      rgba(152, 227, 8, 1) 0%,
-      rgba(255, 255, 255, 1) 100%
-    );
+    background: transparent;
   }
 
-  /* Handle */
   ::-webkit-scrollbar-thumb {
-    /* background: rgb(183, 180, 234); */
-    background-image: url("/images/juicy-rocket.gif");
-    background-position: center bottom, center -40px;
-    background-repeat: no-repeat, no-repeat;
-    background-size: cover;
-    border-radius: 5px;
+    background-color: hsl(240 5% 78%);
+    background-clip: content-box;
+    border: 3px solid transparent;
+    border-radius: 9999px;
   }
 
-  /* Handle on hover */
+  html.dark ::-webkit-scrollbar-thumb {
+    background-color: hsl(240 4% 30%);
+  }
+
   ::-webkit-scrollbar-thumb:hover {
-    transform: scale(1.5);
+    background-color: hsl(243 75% 59%);
   }
 
   .bg-clip-text {
@@ -115,12 +119,29 @@
 }
 
 @layer utilities {
+  /* One accent for the whole site: indigo → violet. */
   .heading {
-    @apply font-bold text-5xl md:text-7xl text-center bg-gradient-to-t from-blue-700 to-blue-500 dark:from-blue-400 dark:to-blue-200 bg-clip-text text-transparent select-none;
+    @apply font-bold tracking-tight text-4xl md:text-6xl text-center text-gray-900 dark:text-white select-none;
   }
 
   .secondaryHeading {
-    @apply font-bold text-3xl md:text-5xl text-center bg-gradient-to-b from-cyan-200 to-cyan-500 dark:from-cyan-50 dark:to-cyan-300 bg-clip-text text-transparent;
+    @apply font-bold tracking-tight text-3xl md:text-5xl text-gray-900 dark:text-white;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-indigo-600 dark:text-indigo-400;
+  }
+
+  .accent-text {
+    @apply bg-gradient-to-r from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400 bg-clip-text text-transparent;
+  }
+
+  .surface-card {
+    @apply rounded-3xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950;
+  }
+
+  .muted-copy {
+    @apply text-gray-600 dark:text-gray-400;
   }
 
   .paraHead {
